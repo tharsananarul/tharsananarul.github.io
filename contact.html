@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Tharsanan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="logo">T<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="projets.html">Projets</a></li>
+      <li><a href="cv.html">CV</a></li>
+      <li><a href="competences.html">Compétences</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+
+  <section class="page-hero">
+    <div class="hero-bg"><div class="blob blob-1"></div><div class="grid-overlay"></div></div>
+    <div class="page-hero-content">
+      <p class="section-tag fade-in delay-1">Parlons-en</p>
+      <h1 class="page-hero-title fade-in delay-2">Un projet en tête ?<br /><span class="highlight">Contacte-moi.</span></h1>
+      <p class="page-hero-desc fade-in delay-3">Disponible pour collaborations et projets créatifs.</p>
+    </div>
+  </section>
+
+  <section class="section contact-page">
+    <div class="contact-inner">
+
+      <div class="contact-text reveal">
+        <p class="section-tag">Mes coordonnées</p>
+        <p class="apropos-desc" style="margin-bottom:36px;">
+          Motivé et créatif, je souhaite mettre mes compétences au service de projets innovants.
+          N'hésite pas à me contacter !ss
+        </p>
+        <div class="contact-links">
+          <a href="mailto:tharsananarul@gmail.com" class="contact-link">
+            <span class="link-icon">✉</span>tharsananarul@gmail.com
+          </a>
+          <a href="tel:0749878775" class="contact-link">
+            <span class="link-icon">📞</span>07 49 87 87 75
+          </a>
+          <a href="https://www.linkedin.com/in/tharsanan-arulananthaselvam/" target="_blank" class="contact-link">
+            <span class="link-icon">in</span>LinkedIn
+          </a>
+          <a href="https://www.instagram.com/thithu.arl/" target="_blank" class="contact-link">
+            <span class="link-icon">ig</span>@thithu.arl
+          </a>
+          <a href="https://tharsananarul.wixsite.com/portfolio" target="_blank" class="contact-link">
+            <span class="link-icon">W</span>Portfolio Wix
+          </a>
+        </div>
+        <div class="disponibilite">
+          <span class="badge-dot"></span>Disponible pour alternance & collaborations
+        </div>
+      </div>
+
+      <form class="contact-form reveal delay-1" id="contactForm" action="https://formspree.io/f/tharsananarul@gmail.com" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="prenom">Prénom</label>
+            <input type="text" id="prenom" name="prenom" placeholder="Ton prénom" required />
+          </div>
+          <div class="form-group">
+            <label for="nom">Nom</label>
+            <input type="text" id="nom" name="nom" placeholder="Ton nom" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="ton@email.com" required />
+        </div>
+        <div class="form-group">
+          <label for="sujet">Sujet</label>
+          <input type="text" id="sujet" name="sujet" placeholder="Stage, collaboration, projet..." />
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="6" placeholder="Dis-moi tout..." required></textarea>
+        </div>
+        <button type="submit" class="btn-primary btn-full">Envoyer le message</button>
+        <p class="form-success" id="formSuccess">✓ Message envoyé ! Je te réponds très vite.</p>
+      </form>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <a href="index.html" class="logo">T<span>.</span></a>
+      <p class="footer-text">© 2025 Tharsanan Arulananthaselvam — BTS Communication</p>
+      <div class="footer-links">
+        <a href="projets.html">Projets</a><a href="cv.html">CV</a>
+        <a href="competences.html">Compétences</a><a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

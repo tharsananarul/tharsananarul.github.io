@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projets — Tharsanan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .project-card { cursor: pointer; }
+    .project-link-hint {
+      font-size: 0.78rem; color: #7a90b8;
+      font-style: italic; margin-top: 8px; display: block;
+      transition: color 0.3s;
+    }
+    .project-card:hover .project-link-hint { color: #BCD9F5; }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="logo">T<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="projets.html" class="active">Projets</a></li>
+      <li><a href="cv.html">CV</a></li>
+      <li><a href="competences.html">Compétences</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+
+  <section class="page-hero">
+    <div class="hero-bg"><div class="blob blob-1"></div><div class="grid-overlay"></div></div>
+    <div class="page-hero-content">
+      <p class="section-tag fade-in delay-1">Mon travail</p>
+      <h1 class="page-hero-title fade-in delay-2">Mes <span class="highlight">projets</span></h1>
+      <p class="page-hero-desc fade-in delay-3">Double-clique sur un projet pour découvrir tous les détails et les photos.</p>
+    </div>
+  </section>
+
+  <section class="section projets-page">
+
+    <!-- ── FUTSAL DRANCY ── -->
+    <div class="projets-categorie reveal">
+      <p class="section-tag">Expérience professionnelle</p>
+      <h2 class="section-title">Futsal <span class="highlight">Drancy</span></h2>
+    </div>
+    <div class="projects-grid" style="max-width:1200px;margin:0 auto 80px;">
+      <div class="project-card large reveal" ondblclick="window.location='projet-futsal.html'">
+        <div class="project-img">
+          <img src="images/couvertures/futsal-drancy.png" alt="Futsal Drancy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <div class="img-placeholder p1" style="display:none"><span>Futsal Drancy</span></div>
+        </div>
+        <div class="project-info">
+          <span class="project-tag">Communication · Bénévole · Service Civique · Stage </span>
+          <h3>Futsal Drancy</h3>
+          <p>Création de supports visuels, gestion des réseaux sociaux et communication événementielle.</p>
+          <span class="project-link-hint">Double-cliquer pour voir le projet →</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PROJETS BTS ── -->
+    <div class="projets-categorie reveal">
+      <p class="section-tag">Formation</p>
+      <h2 class="section-title">Projets <span class="highlight">BTS Communication</span></h2>
+    </div>
+    <div class="projets-mini-grid" style="max-width:1200px;margin:0 auto 80px;">
+      <div class="project-card reveal" ondblclick="window.location='projet-btscom.html'">
+        <div class="project-img">
+          <img src="images/couvertures/bts-com.png" alt="BTS Com" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <div class="img-placeholder p2" style="display:none"><span>BTS Com</span></div>
+        </div>
+        <div class="project-info">
+          <span class="project-tag">BTS Communication</span>
+          <h3>BTS Communication</h3>
+          <p>Affiches et mockups conçus avec Illustrator et Photoshop au Lycée Jacques Brel.</p>
+          <span class="project-link-hint">Double-cliquer →</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PROJETS UNIVERSITAIRES ── -->
+    <div class="projets-categorie reveal">
+      <p class="section-tag">BUT MMI · IUT Sénart-Fontainebleau</p>
+      <h2 class="section-title">Projets <span class="highlight">universitaires</span></h2>
+    </div>
+    <div class="projets-mini-grid" style="max-width:1200px;margin:0 auto 80px;">
+      <div class="project-card reveal" ondblclick="window.location='projet-alda.html'">
+        <div class="project-img">
+          <img src="images/couvertures/alda.png" alt="Alda" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <div class="img-placeholder p3" style="display:none"><span>Alda</span></div>
+        </div>
+        <div class="project-info">
+          <span class="project-tag">Projet universitaire · Marque de bière</span>
+          <h3>Alda</h3>
+          <p>Création d'une marque de bière artisanale — identité visuelle, site web et animations.</p>
+          <span class="project-link-hint">Double-cliquer →</span>
+        </div>
+      </div>
+      <div class="project-card reveal delay-1" ondblclick="window.location='projet-sansbavure.html'">
+        <div class="project-img">
+          <img src="images/couvertures/sansbavures.png" alt="Sans Bavure" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <div class="img-placeholder p4" style="display:none"><span>Sans Bavure</span></div>
+        </div>
+        <div class="project-info">
+          <span class="project-tag">Projet universitaire · Association fictive</span>
+          <h3>Sans Bavure</h3>
+          <p>Association fictive contre les abus policiers — identité visuelle et stratégie de communication.</p>
+          <span class="project-link-hint">Double-cliquer →</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── CRÉATIONS PERSO ── -->
+    <div class="projets-categorie reveal">
+      <p class="section-tag">Hors cursus</p>
+      <h2 class="section-title">Créations <span class="highlight">personnelles</span></h2>
+    </div>
+    <div class="projets-mini-grid" style="max-width:1200px;margin:0 auto;">
+      <div class="project-card reveal" ondblclick="window.location='projet-perso.html'">
+        <div class="project-img">
+          <img src="images/couvertures/projets-crea.png" alt="Créations personnelles" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <div class="img-placeholder p1" style="display:none"><span>Créations</span></div>
+        </div>
+        <div class="project-info">
+          <span class="project-tag">Illustrations · Posters · Vidéo</span>
+          <h3>Projets créatifs personnels</h3>
+          <p>Posters cinéma sud-indien, illustrations et vidéo Terra Scientifica réalisés avec Photoshop.</p>
+          <span class="project-link-hint">Double-cliquer →</span>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="section cta-section">
+    <div class="cta-box reveal">
+      <p class="section-tag">Tu as un projet ?</p>
+      <h2 class="section-title">Travaillons <span class="highlight">ensemble</span></h2>
+      <a href="contact.html" class="btn-primary">Me contacter</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <a href="index.html" class="logo">T<span>.</span></a>
+      <p class="footer-text">© 2025 Tharsanan Arulananthaselvam — BTS Communication</p>
+      <div class="footer-links">
+        <a href="projets.html">Projets</a><a href="cv.html">CV</a>
+        <a href="competences.html">Compétences</a><a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
