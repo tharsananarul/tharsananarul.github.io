@@ -23,6 +23,18 @@
     .projet-meta-block p{font-size:1rem;color:var(--text-muted);}
     .projet-deliverables{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;}
     .deliverable-tag{background:rgba(188,217,245,0.06);border:1px solid rgba(188,217,245,0.15);border-radius:100px;padding:8px 18px;font-size:0.85rem;color:#BCD9F5;}
+    
+    /* ── PDFs / DOCUMENTS ── */
+    .projet-rapports { display: flex; flex-direction: column; gap: 16px; margin-top: 40px; margin-bottom: 20px; }
+    .rapport-label { font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase; color: #BCD9F5; margin-bottom: 4px; display: block; }
+    .rapport-card { background: #111d30; border: 1px solid rgba(188,217,245,0.15); border-radius: 16px; padding: 28px 32px; display: flex; align-items: center; justify-content: space-between; gap: 24px; transition: border-color 0.3s; }
+    .rapport-card:hover { border-color: #BCD9F5; }
+    .rapport-annee { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: #BCD9F5; font-weight: 600; display: block; margin-bottom: 8px; }
+    .rapport-info h3 { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; color: #e8edf8; margin-bottom: 6px; }
+    .rapport-info p { font-size: 0.88rem; color: #7a90b8; }
+    .rapport-btn { display: inline-flex; align-items: center; gap: 8px; background: #1B4FFF; color: #fff; font-size: 0.88rem; font-weight: 500; padding: 12px 24px; border-radius: 100px; text-decoration: none; white-space: nowrap; transition: background 0.3s, transform 0.3s; flex-shrink: 0; }
+    .rapport-btn:hover { background: #2d5fff; transform: translateY(-2px); }
+    
     .projet-images{width:100%;background:#080e1a;padding:8px 0;}
     .projet-img-full{width:100%;display:flex;justify-content:center;align-items:center;padding:8px 5vw;background:#080e1a;}
     .projet-img-full img{width:100%;max-width:1100px;height:auto;display:block;object-fit:contain;border-radius:16px;box-shadow:0 16px 60px rgba(0,0,0,0.6);transition:transform 0.6s ease;}
@@ -37,7 +49,9 @@
     .projet-next-card img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;}
     .projet-next-card:hover img{transform:scale(1.05);}
     .projet-next-card-info{position:absolute;bottom:0;left:0;right:0;padding:20px 24px;background:linear-gradient(to top,rgba(8,14,26,0.9),transparent);color:#fff;font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;}
+    
     @media(max-width:900px){.projet-intro{grid-template-columns:1fr;gap:48px;}.projet-img-grid{grid-template-columns:1fr;padding:0 4vw 4px;}.projet-img-full{padding:4px 4vw;}.projet-next-cards{grid-template-columns:1fr;}.projet-hero{height:45vh;}}
+    @media(max-width:600px){.rapport-card{flex-direction:column;align-items:flex-start;}}
   </style>
 </head>
 <body>
@@ -53,18 +67,30 @@
     <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
   </nav>
 
-  <!-- ── HERO ── -->
   <div class="projet-hero">
     <img src="images/couvertures/bts-com.png" alt="BTS Communication" />
     <div class="projet-hero-overlay"></div>
     <h1 class="projet-hero-title">BTS Communication</h1>
   </div>
 
-  <!-- ── INTRO ── -->
   <div class="projet-intro">
     <div class="projet-intro-left">
       <h2>Intro</h2>
       <p>Voici quelques projets créatifs réalisés en BTS Communication, principalement des affiches et mockups conçus avec Illustrator et Photoshop. Ces réalisations illustrent mon sens du visuel et ma maîtrise des outils graphiques, développés tout au long de ma formation au Lycée Jacques Brel à La Courneuve.</p>
+      
+      <div class="projet-rapports">
+        <span class="rapport-label">Documents</span>
+
+        <div class="rapport-card">
+          <div class="rapport-info">
+            <span class="rapport-annee">BTS Communication</span>
+            <h3>Fiches descriptives</h3>
+            <p>Détail des projets et réalisations</p>
+          </div>
+          <a href="documents/fiches descriptives.pdf" download class="rapport-btn">⬇ Télécharger le PDF</a>
+        </div>
+      </div>
+
       <br /><h2>Livrables</h2>
       <div class="projet-deliverables">
         <span class="deliverable-tag">Affiches</span>
@@ -76,6 +102,7 @@
         <span class="deliverable-tag">Publications réseaux sociaux</span>
       </div>
     </div>
+    
     <div class="projet-intro-right">
       <div class="projet-meta-block"><span>Période</span><p>Janvier 2025 — En cours</p></div>
       <div class="projet-meta-block"><span>Formation</span><p>BTS Communication</p></div>
@@ -83,48 +110,43 @@
       <div class="projet-meta-block"><span>Outils</span><p>Illustrator, Photoshop, InDesign</p></div>
     </div>
   </div>
-<!-- ── IMAGES ── -->
-<div class="projet-images">
 
-  <!-- Affiches A0 -->
-  <div class="projet-img-full"><img src="images/bts-com/affichea0.png" alt="Affiche A0" /></div>
-  <div class="projet-img-grid">
-    <div class="projet-img-full"><img src="images/bts-com/affichea0mockup.png" alt="Affiche A0 mockup" /></div>
-    <div class="projet-img-full"><img src="images/bts-com/affiche-inscription.png" alt="Affiche inscription" /></div>
-  </div>
+  <div class="projet-images">
 
-  <!-- Kakémono & Roll-up -->
-  <div class="projet-img-grid">
-    <div class="projet-img-full"><img src="images/bts-com/kakemono.png" alt="Kakémono" /></div>
-    <div class="projet-img-full"><img src="images/bts-com/kakemono-mockup.png" alt="Kakémono mockup" /></div>
-  </div>
-  <div class="projet-img-full"><img src="images/bts-com/rollup-mockup.png" alt="Roll-up mockup" /></div>
+    <div class="projet-img-full"><img src="images/bts-com/affichea0.png" alt="Affiche A0" /></div>
+    <div class="projet-img-grid">
+      <div class="projet-img-full"><img src="images/bts-com/affichea0mockup.png" alt="Affiche A0 mockup" /></div>
+      <div class="projet-img-full"><img src="images/bts-com/affiche-inscription.png" alt="Affiche inscription" /></div>
+    </div>
 
-  <!-- Pull & Instagram mockup -->
-  <div class="projet-img-grid">
-    <div class="projet-img-full"><img src="images/bts-com/mockuppull.png" alt="Mockup pull" /></div>
-    <div class="projet-img-full"><img src="images/bts-com/instgram-mockup.png" alt="Instagram mockup" /></div>
-  </div>
+    <div class="projet-img-grid">
+      <div class="projet-img-full"><img src="images/bts-com/kakemono.png" alt="Kakémono" /></div>
+      <div class="projet-img-full"><img src="images/bts-com/kakemono-mockup.png" alt="Kakémono mockup" /></div>
+    </div>
+    <div class="projet-img-full"><img src="images/bts-com/rollup-mockup.png" alt="Roll-up mockup" /></div>
 
-  <!-- Posts réseaux sociaux -->
-  <div class="projet-img-grid">
-    <div class="projet-img-full"><img src="images/bts-com/postscc01.png" alt="Post SCC 1" /></div>
-    <div class="projet-img-full"><img src="images/bts-com/postscc02.png" alt="Post SCC 2" /></div>
-  </div>
-  <div class="projet-img-full"><img src="images/bts-com/sdcipost.png" alt="Post SDCI" /></div>
+    <div class="projet-img-grid">
+      <div class="projet-img-full"><img src="images/bts-com/mockuppull.png" alt="Mockup pull" /></div>
+      <div class="projet-img-full"><img src="images/bts-com/instgram-mockup.png" alt="Instagram mockup" /></div>
+    </div>
 
-  <!-- Expo & Newsletter & Flyer -->
-  <div class="projet-img-grid">
-    <div class="projet-img-full"><img src="images/bts-com/expo-com.png" alt="Expo communication" /></div>
-    <div class="projet-img-full"><img src="images/bts-com/expocompost.png" alt="Expo com post" /></div>
-  </div>
-  <div class="projet-img-grid">
-    <div class="projet-img-full"><img src="images/bts-com/newsletter.png" alt="Newsletter" /></div>
-    <div class="projet-img-full"><img src="images/bts-com/flyer-bmw.png" alt="Flyer BMW" /></div>
-  </div>
+    <div class="projet-img-grid">
+      <div class="projet-img-full"><img src="images/bts-com/postscc01.png" alt="Post SCC 1" /></div>
+      <div class="projet-img-full"><img src="images/bts-com/postscc02.png" alt="Post SCC 2" /></div>
+    </div>
+    <div class="projet-img-full"><img src="images/bts-com/sdcipost.png" alt="Post SDCI" /></div>
 
-</div>
-  <!-- ── NEXT PROJECT ── -->
+    <div class="projet-img-grid">
+      <div class="projet-img-full"><img src="images/bts-com/expo-com.png" alt="Expo communication" /></div>
+      <div class="projet-img-full"><img src="images/bts-com/expocompost.png" alt="Expo com post" /></div>
+    </div>
+    <div class="projet-img-grid">
+      <div class="projet-img-full"><img src="images/bts-com/newsletter.png" alt="Newsletter" /></div>
+      <div class="projet-img-full"><img src="images/bts-com/flyer-bmw.png" alt="Flyer BMW" /></div>
+    </div>
+
+  </div>
+  
   <div class="projet-next">
     <p>Projet suivant</p>
     <div class="projet-next-cards">
