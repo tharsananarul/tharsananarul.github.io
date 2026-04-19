@@ -581,7 +581,7 @@ ul { list-style: none; }
   padding-left: 16px; position: relative; line-height: 1.6;
 }
 .timeline-bullets li::before {
-  content: 'ÔÇö'; position: absolute; left: 0; color: var(--blue-light);
+  content: '\2014'; position: absolute; left: 0; color: var(--blue-light);
 }
 .badge-stage, .badge-civique, .badge-benevole {
   display: inline-block;
@@ -717,7 +717,7 @@ ul { list-style: none; }
   font-size: 0.88rem; color: var(--text-muted);
   padding-left: 20px; position: relative; line-height: 1.6;
 }
-.projet-bullets li::before { content: 'ÔåÆ'; position: absolute; left: 0; color: var(--blue-light); }
+.projet-bullets li::before { content: '\2192'; position: absolute; left: 0; color: var(--blue-light); }
 .projets-mini-grid {
   max-width: 1200px; margin: 0 auto;
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
