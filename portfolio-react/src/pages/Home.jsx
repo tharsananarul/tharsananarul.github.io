@@ -2,7 +2,8 @@ import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import PageWrapper from '../components/PageWrapper'
-import useReveal from '../hooks/useReveal'
+import Reveal from '../components/Reveal'
+import { motion, useScroll, useTransform } from 'framer-motion'
 
 class TextScramble {
   constructor(el) {
@@ -38,9 +39,16 @@ class TextScramble {
 }
 
 export default function Home() {
-  useReveal()
   const highlightRef = useRef(null)
   const descRef = useRef(null)
+  const containerRef = useRef(null)
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"]
+  })
+  const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"])
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0])
 
   useEffect(() => {
     if (highlightRef.current) {
@@ -112,69 +120,75 @@ export default function Home() {
   return (
     <PageWrapper>
       {/* HERO */}
-      <section className="hero">
-        <div className="hero-bg">
+      <section className="hero" ref={containerRef}>
+        <motion.div className="hero-bg" style={{ y: heroY, opacity: heroOpacity }}>
           <div className="blob blob-1"></div>
           <div className="blob blob-2"></div>
           <div className="grid-overlay"></div>
-        </div>
+        </motion.div>
+        
         <div className="hero-content">
           <div className="hero-text">
-            <p className="hero-tag fade-in delay-1">BTS Communication · Design Graphique</p>
-            <h1 className="hero-title fade-in delay-2">
-              Bonjour,<br />je suis<br /><span className="highlight" ref={highlightRef}>Tharsanan</span>
-            </h1>
-            <p className="hero-desc fade-in delay-3" ref={descRef}>
-              Étudiant en 2ème année de BTS Communication au Lycée Jacques Brel.
-              Je transforme les idées en expériences visuelles mémorables —
-              identités de marque, contenus digitaux et communication visuelle. 🚀
-            </p>
-            <div className="hero-cta fade-in delay-4">
-              <Link to="/projets" className="btn-primary">Voir mes projets</Link>
-              <Link to="/contact" className="btn-ghost">Me contacter</Link>
-            </div>
-          </div>
-          <div className="hero-image fade-in delay-3">
-            <div className="image-frame">
-              <img src="images/ma-photo/photo-cv.png" alt="Tharsanan" onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex' }} />
-              <div className="photo-placeholder" style={{ display: 'none' }}>
-                <svg viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: 160 }}>
-                  <circle cx="100" cy="85" r="45" fill="#1B4FFF" opacity="0.3" />
-                  <ellipse cx="100" cy="190" rx="65" ry="45" fill="#1B4FFF" opacity="0.2" />
-                  <circle cx="100" cy="85" r="38" fill="#1B4FFF" opacity="0.5" />
-                  <text x="100" y="92" textAnchor="middle" fill="white" fontSize="28" fontFamily="Syne" fontWeight="700">T</text>
-                </svg>
+            <Reveal delay={0.1}>
+              <p className="hero-tag">BTS Communication · Design Graphique</p>
+            </Reveal>
+            <Reveal delay={0.2} y={50}>
+              <h1 className="hero-title">
+                Bonjour,<br />je suis<br /><span className="highlight" ref={highlightRef}>Tharsanan</span>
+              </h1>
+            </Reveal>
+            <Reveal delay={0.3}>
+              <p className="hero-desc" ref={descRef}>
+                Étudiant en 2ème année de BTS Communication au Lycée Jacques Brel.
+                Je transforme les idées en expériences visuelles mémorables —
+                identités de marque, contenus digitaux et communication visuelle. 🚀
+              </p>
+            </Reveal>
+            <Reveal delay={0.4}>
+              <div className="hero-cta">
+                <Link to="/projets" className="btn-primary">Voir mes projets</Link>
+                <Link to="/contact" className="btn-ghost">Me contacter</Link>
               </div>
-              <div className="image-border"></div>
-            </div>
-            <div className="hero-badge"><span className="badge-dot"></span>Disponible pour alternance</div>
+            </Reveal>
+          </div>
+
+          <div className="hero-image">
+            <Reveal delay={0.3} y={60}>
+              <div className="image-frame">
+                <img src="images/ma-photo/photo-cv.png" alt="Tharsanan" onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex' }} />
+                <div className="photo-placeholder" style={{ display: 'none' }}>
+                  <span>TA</span>
+                </div>
+                <div className="image-border"></div>
+              </div>
+            </Reveal>
+            <Reveal delay={0.5}>
+              <div className="hero-badge">
+                <div className="badge-dot"></div>
+                Disponible pour projets
+              </div>
+            </Reveal>
           </div>
         </div>
-        <div className="scroll-hint fade-in delay-5"><span>Défiler</span><div className="scroll-line"></div></div>
+        
+        <div className="scroll-hint">
+          <div className="scroll-line"></div>
+          Scroll
+        </div>
       </section>
 
       {/* MARQUEE */}
       <div className="marquee-wrapper">
         <div className="marquee-track">
-          {['Communication', 'Design Graphique', 'Réseaux Sociaux', 'Motion Design', 'Identité Visuelle', 'UI/UX Design', 'Photoshop', 'Illustrator', 'After Effects'].map(item => (
-            <span className="marquee-item" key={item}>{item}</span>
+          {['Communication Visuelle','Design Graphique','Motion Design','Photoshop','Illustrator','UI/UX Design','Photographie','Storytelling'].map((t, i) => (
+            <span key={i} className="marquee-item">{t}</span>
           ))}
-          {['Communication', 'Design Graphique', 'Réseaux Sociaux', 'Motion Design', 'Identité Visuelle', 'UI/UX Design', 'Photoshop', 'Illustrator', 'After Effects'].map(item => (
-            <span className="marquee-item" key={item + '2'}>{item}</span>
+          {['Communication Visuelle','Design Graphique','Motion Design','Photoshop','Illustrator','UI/UX Design','Photographie','Storytelling'].map((t, i) => (
+            <span key={i + '2'} className="marquee-item">{t}</span>
           ))}
         </div>
       </div>
 
-      {/* À PROPOS */}
-      <section className="section apropos-home">
-        <div className="apropos-home-inner">
-          <div className="apropos-home-text reveal">
-            <p className="section-tag">Qui suis-je ?</p>
-            <h2 className="section-title">Un parcours<br /><span className="highlight">atypique &amp; créatif</span></h2>
-            <p className="apropos-desc">
-              Après avoir commencé un BUT Métiers du Multimédia et de l'Internet à l'IUT de Sénart-Fontainebleau,
-              j'ai choisi de me réorienter vers la communication, un domaine qui me passionne et dans lequel
-              je souhaite évoluer professionnellement.
             </p>
             <p className="apropos-desc">
               Mon parcours m'a permis d'explorer divers aspects du multimédia, de l'audiovisuel au graphisme,

@@ -1,17 +1,25 @@
 import { Link } from 'react-router-dom'
 import PageWrapper from '../components/PageWrapper'
 import MosaicGrid from '../components/MosaicGrid'
-import useReveal from '../hooks/useReveal'
+import Reveal from '../components/Reveal'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useRef } from 'react'
 
 export default function ProjetsUX() {
-  useReveal()
-  const btsItems = [
+  const containerRef = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"]
+  })
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"])
+  
+  const btsRevision = [
     { src: 'images/site/bts-fdr/1.png', alt: 'BTS REVISIONS 1' },
     { src: 'images/site/bts-fdr/2.png', alt: 'BTS REVISIONS 2' },
     { src: 'images/site/bts-fdr/3.png', alt: 'BTS REVISIONS 3' },
     { src: 'images/site/bts-fdr/4.png', alt: 'BTS REVISIONS 4' },
   ]
-  const hopeItems = [
+  const hopePower = [
     { src: 'images/site/hope-power/1.png', alt: 'HopePower 1' },
     { src: 'images/site/hope-power/2.png', alt: 'HopePower 2' },
     { src: 'images/site/hope-power/3.png', alt: 'HopePower 3' },
@@ -20,10 +28,16 @@ export default function ProjetsUX() {
 
   return (
     <PageWrapper>
-      <div className="projet-hero-wrap">
-        <img src="images/couvertures/ui-ux-designs.png" alt="UI/UX Works" />
+      <div className="projet-hero-wrap" ref={containerRef}>
+        <motion.img 
+          src="images/couvertures/projets-ux.png" 
+          alt="UI/UX Design" 
+          style={{ y }}
+        />
         <div className="projet-hero-overlay"></div>
-        <h1 className="projet-hero-title">UI/UX Works</h1>
+        <Reveal y={50}>
+          <h1 className="projet-hero-title">Projets UI/UX</h1>
+        </Reveal>
       </div>
       <div className="projet-intro">
         <div className="projet-intro-left">
@@ -37,26 +51,45 @@ export default function ProjetsUX() {
         </div>
       </div>
 
-      {/* BTS Revisions */}
       <div className="site-section">
         <div className="site-header">
-          <span className="project-tag">Développement Web Site</span>
-          <h3 className="site-title">Plateforme de Révision BTS Communication</h3>
-          <p className="site-desc">Un outil complet conçu pour centraliser toutes les ressources de révision. L'architecture a été pensée pour une navigation fluide sur mobile et desktop.</p>
-          <a href="https://tharsananarul.github.io/fdr-bts-com/" target="_blank" rel="noreferrer" className="btn-primary">Voir le site en direct →</a>
+          <Reveal delay={0.1}>
+            <div className="section-tag">Projet Principal</div>
+          </Reveal>
+          <Reveal delay={0.2}>
+            <h2 className="site-title">BTS Révision — Plateforme Éducative</h2>
+          </Reveal>
+          <Reveal delay={0.3}>
+            <p className="site-desc">
+              Conception d'une plateforme de révision complète pour les étudiants en BTS Communication. 
+              Focus sur l'ergonomie (UX) pour faciliter l'apprentissage nomade et l'accessibilité des ressources.
+            </p>
+          </Reveal>
+          <Reveal delay={0.4}>
+            <a href="https://tharsananarul.github.io/bts-revision/" target="_blank" rel="noreferrer" className="btn-primary">
+              Visiter le site live →
+            </a>
+          </Reveal>
         </div>
-        <MosaicGrid sections={[{ items: btsItems }]} animate={false} />
+        <MosaicGrid sections={[{ items: btsRevision }]} animate={true} />
       </div>
 
-      {/* HopePower */}
-      <div className="site-section">
+      <div className="site-section" style={{ borderTop: '1px solid var(--border)', paddingTop: 80 }}>
         <div className="site-header">
-          <span className="project-tag">UI Design · Maquette</span>
-          <h3 className="site-title">HopePower</h3>
-          <p className="site-desc">Conception d'une interface pour une application axée sur l'énergie durable. Focus sur les contrastes, la lisibilité et l'aspect premium de l'interface.</p>
-          <a href="https://tharsananarul.github.io/hopepower/" target="_blank" rel="noreferrer" className="btn-primary">Voir la maquette →</a>
+          <Reveal delay={0.1}>
+            <div className="section-tag">Case Study</div>
+          </Reveal>
+          <Reveal delay={0.2}>
+            <h2 className="site-title">HopePower — Mockup Applicatif</h2>
+          </Reveal>
+          <Reveal delay={0.3}>
+            <p className="site-desc">
+              Prototype haute-fidélité pour une application mobile de mise en relation solidaire. 
+              Travail approfondi sur l'interface utilisateur (UI) et le parcours utilisateur.
+            </p>
+          </Reveal>
         </div>
-        <MosaicGrid sections={[{ items: hopeItems }]} animate={false} />
+        <MosaicGrid sections={[{ items: hopePower }]} animate={true} />
       </div>
 
       <div className="projet-next">

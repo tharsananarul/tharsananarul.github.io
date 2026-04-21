@@ -26,18 +26,19 @@ export default function MosaicGrid({ sections, animate = true }) {
   }
 
   const containerVariants = {
-    hidden: { opacity: 1 },
+    hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.1
+        staggerChildren: 0.12,
+        delayChildren: 0.1,
+        ease: [0.16, 1, 0.3, 1]
       }
     }
   }
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 100, scale: 0.9, rotate: -5 },
+    hidden: { opacity: 0, y: 60, scale: 0.9, rotate: -2 },
     visible: { 
       opacity: 1, 
       y: 0, 
@@ -45,10 +46,11 @@ export default function MosaicGrid({ sections, animate = true }) {
       rotate: 0,
       transition: {
         type: "spring",
-        stiffness: 80,
+        stiffness: 60,
         damping: 15,
-        bounce: 0.4,
-        duration: 0.8
+        mass: 1,
+        bounce: 0.3,
+        duration: 1
       }
     }
   }

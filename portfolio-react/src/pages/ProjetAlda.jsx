@@ -1,10 +1,18 @@
 import { Link } from 'react-router-dom'
 import PageWrapper from '../components/PageWrapper'
 import MosaicGrid from '../components/MosaicGrid'
-import useReveal from '../hooks/useReveal'
+import Reveal from '../components/Reveal'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useRef } from 'react'
 
 export default function ProjetAlda() {
-  useReveal()
+  const containerRef = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"]
+  })
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"])
+  
   const sections = [{
     items: [
       { src: 'images/alda/affichemockup.jpg', alt: 'Affiche mockup', tall: true },
@@ -29,26 +37,51 @@ export default function ProjetAlda() {
 
   return (
     <PageWrapper>
-      <div className="projet-hero-wrap">
-        <img src="images/couvertures/alda.png" alt="Alda" />
+      <div className="projet-hero-wrap" ref={containerRef}>
+        <motion.img 
+          src="images/couvertures/alda.png" 
+          alt="Alda" 
+          style={{ y }}
+        />
         <div className="projet-hero-overlay"></div>
-        <h1 className="projet-hero-title">Alda</h1>
+        <Reveal y={50}>
+          <h1 className="projet-hero-title">Identité Alda</h1>
+        </Reveal>
       </div>
+
       <div className="projet-intro">
         <div className="projet-intro-left">
-          <h2>Intro</h2>
-          <p>Dans le cadre de mes études, j'ai participé à un projet passionnant consistant à créer une marque de bière artisanale inspirée du mystique. Ce projet a été réalisé en collaboration avec une équipe de cinq personnes. Nos travaux ont inclus une étude de marché approfondie, la création d'une charte graphique, la conception de supports de communication, la création d'un site internet et la réalisation d'animations.</p>
-          <br /><h2>Livrables</h2>
+          <Reveal delay={0.1}>
+            <h2>Intro</h2>
+          </Reveal>
+          <Reveal delay={0.2}>
+            <p>Conception d'une identité visuelle complète pour Alda, une marque fictive. Ce projet explore la création d'un logo moderne, d'une charte graphique cohérente et de divers supports de communication (cartes de visite, packagings, papeterie) pour construire une image de marque forte et reconnaissable.</p>
+          </Reveal>
+          <br />
+          <Reveal delay={0.3}>
+            <h2>Livrables</h2>
+          </Reveal>
           <div className="projet-deliverables">
-            {['Identité visuelle','Logo','Charte graphique','Site web','Étiquettes','Supports print','Animations'].map(t => <span className="deliverable-tag" key={t}>{t}</span>)}
+            {['Charte graphique','Logo','Cartes de visite','Packaging','Papeterie','Mockups'].map((t, i) => (
+              <Reveal key={t} delay={0.4 + i * 0.05} width="auto">
+                <span className="deliverable-tag">{t}</span>
+              </Reveal>
+            ))}
           </div>
         </div>
         <div className="projet-intro-right">
-          <div className="projet-meta-block"><span>Année</span><p>Février — Juin 2023</p></div>
-          <div className="projet-meta-block"><span>Formation</span><p>BUT MMI</p></div>
-          <div className="projet-meta-block"><span>École</span><p>IUT de Sénart-Fontainebleau</p></div>
-          <div className="projet-meta-block"><span>Type</span><p>Marque de bière artisanale</p></div>
-          <div className="projet-meta-block"><span>Outils</span><p>Illustrator, Photoshop, After Effects, HTML/CSS/PHP</p></div>
+          {[
+            { label: 'Type', value: 'Branding & Identité' },
+            { label: 'Rôle', value: 'Designer Graphique' },
+            { label: 'Outils', value: 'Illustrator, Photoshop' }
+          ].map((item, i) => (
+            <Reveal key={item.label} delay={0.2 + i * 0.1}>
+              <div className="projet-meta-block">
+                <span>{item.label}</span>
+                <p>{item.value}</p>
+              </div>
+            </Reveal>
+          ))}
         </div>
       </div>
       <MosaicGrid sections={sections} />

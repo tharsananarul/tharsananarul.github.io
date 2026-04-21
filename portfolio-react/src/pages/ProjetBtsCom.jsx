@@ -1,10 +1,18 @@
 import { Link } from 'react-router-dom'
 import PageWrapper from '../components/PageWrapper'
 import MosaicGrid from '../components/MosaicGrid'
-import useReveal from '../hooks/useReveal'
+import Reveal from '../components/Reveal'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useRef } from 'react'
 
 export default function ProjetBtsCom() {
-  useReveal()
+  const containerRef = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"]
+  })
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"])
+  
   const sections = [{
     items: [
       { src: 'images/bts-com/affichea0.jpg', alt: 'Affiche A0', tall: true },
@@ -27,36 +35,66 @@ export default function ProjetBtsCom() {
 
   return (
     <PageWrapper>
-      <div className="projet-hero-wrap">
-        <img src="images/couvertures/bts-com.png" alt="BTS Communication" />
+      <div className="projet-hero-wrap" ref={containerRef}>
+        <motion.img 
+          src="images/couvertures/bts-com.png" 
+          alt="BTS Communication" 
+          style={{ y }}
+        />
         <div className="projet-hero-overlay"></div>
-        <h1 className="projet-hero-title">BTS Communication</h1>
+        <Reveal y={50}>
+          <h1 className="projet-hero-title">BTS Communication</h1>
+        </Reveal>
       </div>
+
       <div className="projet-intro">
         <div className="projet-intro-left">
-          <h2>Intro</h2>
-          <p>Voici quelques projets créatifs réalisés en BTS Communication, principalement des affiches et mockups conçus avec Illustrator et Photoshop. Ces réalisations illustrent mon sens du visuel et ma maîtrise des outils graphiques, développés tout au long de ma formation au Lycée Jacques Brel à La Courneuve.</p>
-          <div className="projet-rapports" style={{ padding: 0, marginTop: 32, marginBottom: 20 }}>
-            <span className="rapport-label">Documents</span>
-            <div className="rapport-card">
-              <div className="rapport-info">
-                <span className="rapport-annee">BTS Communication</span>
-                <h3>Fiches descriptives</h3>
-                <p>Détail des projets et réalisations</p>
+          <Reveal delay={0.1}>
+            <h2>Intro</h2>
+          </Reveal>
+          <Reveal delay={0.2}>
+            <p>Voici quelques projets créatifs réalisés en BTS Communication, principalement des affiches et mockups conçus avec Illustrator et Photoshop. Ces réalisations illustrent mon sens du visuel et ma maîtrise des outils graphiques, développés tout au long de ma formation au Lycée Jacques Brel à La Courneuve.</p>
+          </Reveal>
+          
+          <Reveal delay={0.3} y={0}>
+            <div className="projet-rapports" style={{ padding: 0, marginTop: 32, marginBottom: 20 }}>
+              <span className="rapport-label">Documents</span>
+              <div className="rapport-card">
+                <div className="rapport-info">
+                  <span className="rapport-annee">BTS Communication</span>
+                  <h3>Fiches descriptives</h3>
+                  <p>Détail des projets et réalisations</p>
+                </div>
+                <a href="documents/fiches descriptives.pdf" download className="rapport-btn">⬇ Télécharger le PDF</a>
               </div>
-              <a href="documents/fiches descriptives.pdf" download className="rapport-btn">⬇ Télécharger le PDF</a>
             </div>
-          </div>
-          <br /><h2>Livrables</h2>
+          </Reveal>
+
+          <Reveal delay={0.4}>
+            <h2>Livrables</h2>
+          </Reveal>
           <div className="projet-deliverables">
-            {['Affiches','Mockups','Flyers','Newsletter','Kakémono','Roll-up','Publications réseaux sociaux'].map(t => <span className="deliverable-tag" key={t}>{t}</span>)}
+            {['Affiches','Mockups','Flyers','Newsletter','Kakémono','Roll-up','Publications réseaux sociaux'].map((t, i) => (
+              <Reveal key={t} delay={0.5 + i * 0.05} width="auto">
+                <span className="deliverable-tag">{t}</span>
+              </Reveal>
+            ))}
           </div>
         </div>
         <div className="projet-intro-right">
-          <div className="projet-meta-block"><span>Période</span><p>Janvier 2025 — En cours</p></div>
-          <div className="projet-meta-block"><span>Formation</span><p>BTS Communication</p></div>
-          <div className="projet-meta-block"><span>École</span><p>Lycée Jacques Brel, La Courneuve</p></div>
-          <div className="projet-meta-block"><span>Outils</span><p>Illustrator, Photoshop, InDesign</p></div>
+          {[
+            { label: 'Période', value: 'Janvier 2025 — En cours' },
+            { label: 'Formation', value: 'BTS Communication' },
+            { label: 'École', value: 'Lycée Jacques Brel, La Courneuve' },
+            { label: 'Outils', value: 'Illustrator, Photoshop, InDesign' }
+          ].map((item, i) => (
+            <Reveal key={item.label} delay={0.2 + i * 0.1}>
+              <div className="projet-meta-block">
+                <span>{item.label}</span>
+                <p>{item.value}</p>
+              </div>
+            </Reveal>
+          ))}
         </div>
       </div>
       <MosaicGrid sections={sections} />

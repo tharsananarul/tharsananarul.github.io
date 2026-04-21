@@ -1,10 +1,18 @@
 import { Link } from 'react-router-dom'
 import PageWrapper from '../components/PageWrapper'
 import MosaicGrid from '../components/MosaicGrid'
-import useReveal from '../hooks/useReveal'
+import Reveal from '../components/Reveal'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useRef } from 'react'
 
 export default function ProjetFutsal() {
-  useReveal()
+  const containerRef = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"]
+  })
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"])
+
   const sections = [
     {
       tag: 'Identité visuelle', title: 'Logos, Maillots & Gobelets',
@@ -62,48 +70,80 @@ export default function ProjetFutsal() {
 
   return (
     <PageWrapper>
-      <div className="projet-hero-wrap">
-        <img src="images/couvertures/futsal-drancy.png" alt="Futsal Drancy" />
+      <div className="projet-hero-wrap" ref={containerRef}>
+        <motion.img 
+          src="images/couvertures/futsal-drancy.png" 
+          alt="Futsal Drancy" 
+          style={{ y }}
+        />
         <div className="projet-hero-overlay"></div>
-        <h1 className="projet-hero-title">Futsal Drancy</h1>
+        <Reveal y={50}>
+          <h1 className="projet-hero-title">Futsal Drancy</h1>
+        </Reveal>
       </div>
 
       <div className="projet-intro">
         <div className="projet-intro-left">
-          <h2>Intro</h2>
-          <p>Dans le cadre de mon service civique en tant que chargé de communication, puis de mon alternance pour le Futsal Drancy, j'ai réalisé divers contenus visuels : affiches, publications et stories destinées aux réseaux sociaux du club. Ces créations visaient à valoriser les événements, les équipes et la vie du club au quotidien.</p>
-          <br /><h2>Livrables</h2>
+          <Reveal delay={0.1}>
+            <h2>Intro</h2>
+          </Reveal>
+          <Reveal delay={0.2}>
+            <p>Dans le cadre de mon service civique en tant que chargé de communication, puis de mon alternance pour le Futsal Drancy, j'ai réalisé divers contenus visuels : affiches, publications et stories destinées aux réseaux sociaux du club. Ces créations visaient à valoriser les événements, les équipes et la vie du club au quotidien.</p>
+          </Reveal>
+          <br />
+          <Reveal delay={0.3}>
+            <h2>Livrables</h2>
+          </Reveal>
           <div className="projet-deliverables">
-            {['Affiches','Publications Instagram','Stories','Flyers','Réseaux sociaux','Retouche photo','Logo'].map(t => <span className="deliverable-tag" key={t}>{t}</span>)}
+            {['Affiches','Publications Instagram','Stories','Flyers','Réseaux sociaux','Retouche photo','Logo'].map((t, i) => (
+              <Reveal key={t} delay={0.4 + i * 0.05} width="auto">
+                <span className="deliverable-tag">{t}</span>
+              </Reveal>
+            ))}
           </div>
         </div>
         <div className="projet-intro-right">
-          <div className="projet-meta-block"><span>Bénévole</span><p>Présent</p></div>
-          <div className="projet-meta-block"><span>Service civique</span><p>Septembre 2024 — Mai 2025</p></div>
-          <div className="projet-meta-block"><span>Stage</span><p>Mai–Juin 2025 &amp; Nov–Déc 2025</p></div>
-          <div className="projet-meta-block"><span>Lieu</span><p>Drancy</p></div>
-          <div className="projet-meta-block"><span>Outils</span><p>Photoshop, Lightroom, Canva</p></div>
+          {[
+            { label: 'Bénévole', value: 'Présent' },
+            { label: 'Service civique', value: 'Septembre 2024 — Mai 2025' },
+            { label: 'Stage', value: 'Mai–Juin 2025 & Nov–Déc 2025' },
+            { label: 'Lieu', value: 'Drancy' },
+            { label: 'Outils', value: 'Photoshop, Lightroom, Canva' }
+          ].map((item, i) => (
+            <Reveal key={item.label} delay={0.2 + i * 0.1}>
+              <div className="projet-meta-block">
+                <span>{item.label}</span>
+                <p>{item.value}</p>
+              </div>
+            </Reveal>
+          ))}
         </div>
       </div>
 
       <div className="projet-rapports">
-        <span className="rapport-label">Rapports de stage</span>
-        <div className="rapport-card">
-          <div className="rapport-info">
-            <span className="rapport-annee">Stage 1ère année · Mai — Juin 2025</span>
-            <h3>Rapport de stage — 1ère année BTS</h3>
-            <p>Chargé de communication — Futsal Drancy, Drancy</p>
+        <Reveal>
+          <span className="rapport-label">Rapports de stage</span>
+        </Reveal>
+        <Reveal delay={0.1}>
+          <div className="rapport-card">
+            <div className="rapport-info">
+              <span className="rapport-annee">Stage 1ère année · Mai — Juin 2025</span>
+              <h3>Rapport de stage — 1ère année BTS</h3>
+              <p>Chargé de communication — Futsal Drancy, Drancy</p>
+            </div>
+            <a href="documents/retex-2025.pdf" download className="rapport-btn">⬇ Télécharger le PDF</a>
           </div>
-          <a href="documents/retex-2025.pdf" download className="rapport-btn">⬇ Télécharger le PDF</a>
-        </div>
-        <div className="rapport-card">
-          <div className="rapport-info">
-            <span className="rapport-annee">Stage 2ème année · Nov — Déc 2025</span>
-            <h3>Rapport de stage — 2ème année BTS</h3>
-            <p>Chargé de communication — Futsal Drancy, Drancy</p>
+        </Reveal>
+        <Reveal delay={0.2}>
+          <div className="rapport-card">
+            <div className="rapport-info">
+              <span className="rapport-annee">Stage 2ème année · Nov — Déc 2025</span>
+              <h3>Rapport de stage — 2ème année BTS</h3>
+              <p>Chargé de communication — Futsal Drancy, Drancy</p>
+            </div>
+            <a href="documents/retex-2026.pdf" download className="rapport-btn">⬇ Télécharger le PDF</a>
           </div>
-          <a href="documents/retex-2026.pdf" download className="rapport-btn">⬇ Télécharger le PDF</a>
-        </div>
+        </Reveal>
       </div>
 
       <MosaicGrid sections={sections} />
