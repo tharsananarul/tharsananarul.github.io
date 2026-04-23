@@ -3,6 +3,9 @@ import { ArrowRight, Code, Layout, Palette, Terminal, ExternalLink, Download, Ar
 import { Link } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
 import Magnetic from '../components/Magnetic'
+import PassionSection from '../components/PassionSection'
+import InfiniteMarquee from '../components/InfiniteMarquee'
+import Counter from '../components/Counter'
 
 // --- Components ---
 
@@ -46,41 +49,9 @@ const TextScramble = ({ text }) => {
   return <span>{displayText || text}</span>
 }
 
-const StatCard = ({ number, label, suffix = "+", delay = 0, duration = 3000 }) => {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
-  const [count, setCount] = useState(0)
-
-  useEffect(() => {
-    if (isInView) {
-      let start = 0
-      const end = parseInt(number)
-      const frameRate = 1000 / 60
-      const totalFrames = Math.round(duration / frameRate)
-      let currentFrame = 0
-      
-      const timer = setInterval(() => {
-        currentFrame++
-        const progress = currentFrame / totalFrames
-        // Ease out quad
-        const easeProgress = progress * (2 - progress)
-        
-        const currentCount = Math.floor(easeProgress * end)
-        setCount(currentCount)
-        
-        if (currentFrame === totalFrames) {
-          setCount(end)
-          clearInterval(timer)
-        }
-      }, frameRate)
-      
-      return () => clearInterval(timer)
-    }
-  }, [isInView, number])
-
+const StatCard = ({ number, label, suffix = "+", delay = 0 }) => {
   return (
     <motion.div
-      ref={ref}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -89,7 +60,7 @@ const StatCard = ({ number, label, suffix = "+", delay = 0, duration = 3000 }) =
       className="glass-card p-6 md:p-8 rounded-2xl flex flex-col items-center text-center group border-white/5"
     >
       <span className="text-4xl md:text-5xl font-extrabold text-accent-light mb-2 tracking-tighter font-heading">
-        {count}{suffix}
+        <Counter to={parseInt(number)} suffix={suffix} />
       </span>
       <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-text-muted group-hover:text-white transition-colors">
         {label}
@@ -136,13 +107,10 @@ export default function Home() {
   }
 
   return (
-    <main className="relative overflow-hidden bg-primary" onMouseMove={handleMouseMove}>
-      {/* Background blobs with floating animation */}
+    <main className="relative overflow-hidden bg-transparent" onMouseMove={handleMouseMove}>
+      {/* Background patterns */}
       <div className="absolute inset-0 pointer-events-none -z-10">
         <div className="grid-overlay" />
-        <div className="blob blob-1" />
-        <div className="blob blob-2" />
-        <div className="blob blob-3" />
       </div>
 
       {/* HERO SECTION */}
@@ -262,7 +230,7 @@ export default function Home() {
       </section>
 
       {/* QUICK ABOUT / STATS SECTION */}
-      <section className="bg-secondary relative py-20 md:py-32">
+      <section className="bg-transparent relative py-20 md:py-32">
         <div className="section-container grid lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -299,8 +267,11 @@ export default function Home() {
         </div>
       </section>
 
+      {/* INFINITE SKILLS MARQUEE */}
+      <InfiniteMarquee />
+
       {/* FEATURED PROJECTS */}
-      <section className="section-container bg-primary">
+      <section className="section-container bg-transparent">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-20 gap-6 md:gap-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -387,8 +358,11 @@ export default function Home() {
         </motion.div>
       </section>
 
+      {/* PASSION SECTION */}
+      <PassionSection />
+
       {/* CTA SECTION */}
-      <section className="bg-secondary py-32 md:py-48 relative">
+      <section className="bg-transparent py-32 md:py-48 relative">
         <div className="section-container text-center relative z-10">
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}

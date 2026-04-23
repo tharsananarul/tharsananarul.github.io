@@ -35,7 +35,7 @@ export default function ProjetsUX() {
   ]
 
   return (
-    <main className="relative bg-primary">
+    <main className="relative bg-transparent overflow-hidden">
       {/* Background patterns */}
       <div className="absolute inset-0 pointer-events-none -z-10">
         <div className="grid-overlay" />
@@ -147,11 +147,14 @@ export default function ProjetsUX() {
       <section className="section-container py-20 md:py-32 border-t border-white/5">
         <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-20">
           <div className="max-w-2xl">
-            <span className="text-xs font-bold uppercase tracking-widest text-accent-light mb-4 block">Mobile Mockup</span>
+            <span className="text-xs font-bold uppercase tracking-widest text-accent-light mb-4 block">Mockup UI/UX</span>
             <h2 className="text-2xl md:text-6xl font-bold mb-8 tracking-tighter">HopePower</h2>
-            <p className="text-base md:text-xl text-text-muted leading-relaxed">
+            <p className="text-base md:text-xl text-text-muted leading-relaxed mb-10">
               Prototype haute-fidélité réalisé dans le cadre de mon BTS Communication pour un projet d'études. Conception d'une interface mobile pour un site solidaire fictif, avec un focus sur le parcours utilisateur (UX flow) et la cohérence visuelle.
             </p>
+            <a href="https://tharsananarul.github.io/hopepower/" target="_blank" rel="noreferrer" className="btn-premium gap-3">
+              Voir le mockup live <ExternalLink size={20} />
+            </a>
           </div>
         </div>
         <MosaicGrid sections={[{ items: hopePower }]} />

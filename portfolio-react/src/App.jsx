@@ -8,7 +8,7 @@ import PageLoader from './components/PageLoader'
 import ScrollProgress from './components/ScrollProgress'
 import CustomCursor from './components/CustomCursor'
 import SmoothScroll from './components/SmoothScroll'
-import Background3D from './components/Background3D'
+import Background from './components/Background'
 import PageTransition from './components/PageTransition'
 
 import Home from './pages/Home'
@@ -29,12 +29,9 @@ export default function App() {
   const location = useLocation()
 
   return (
-    <div className="bg-primary text-slate-50 min-h-screen selection:bg-accent/30 selection:text-accent overflow-hidden">
-      <Background3D />
+    <div className="text-slate-50 min-h-screen selection:bg-accent/30 selection:text-accent overflow-hidden">
+      <Background />
       
-      {/* Noise Overlay */}
-      <div className="fixed inset-0 pointer-events-none z-[9999] opacity-[0.03] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
-
       <SmoothScroll>
         <PageLoader />
         <ScrollProgress />

@@ -58,7 +58,7 @@ export default function Projets() {
   const baseUrl = import.meta.env.BASE_URL
 
   return (
-    <main className="relative pt-24 md:pt-40 pb-20 bg-primary min-h-screen">
+    <main className="relative pt-24 md:pt-32 pb-20 bg-transparent min-h-screen overflow-hidden">
       <section className="section-container relative z-10">
         <header className="max-w-4xl mb-16 md:mb-24">
           <motion.div

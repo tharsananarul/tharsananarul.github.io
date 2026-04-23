@@ -52,13 +52,14 @@ const experiences = [
     period: "Mars 2023 — Présent",
     title: "Community Manager — Photographe",
     company: "Objectif Sciences International",
-    location: "Paris",
+    location: "Paris & Genève",
     type: "Bénévolat",
     missions: [
-      "Gestion des réseaux sociaux et élaboration de stratégies de visibilité",
-      "Soutien photographique (conférences, expositions, Terra Scientifica)",
-      "Réalisation d'interviews des exposants pour contenus enrichis",
-      "Couverture photographique de la conférence de Genève"
+      "Couverture photographique et vidéo du Forum de Genève au Palais des Nations (ONU).",
+      "Gestion des réseaux sociaux et valorisation des actions de diplomatie scientifique.",
+      "Réalisation d'interviews de délégués internationaux et chercheurs pour Terra Scientifica.",
+      "Création de contenus digitaux pour promouvoir l'éducation aux sciences participatives.",
+      "Soutien à la communication événementielle lors de salons et conférences internationales."
     ]
   },
   {
@@ -76,7 +77,7 @@ const experiences = [
 
 export default function CV() {
   return (
-    <main className="relative pt-24 md:pt-32 pb-20 bg-primary min-h-screen overflow-hidden">
+    <main className="relative pt-24 md:pt-32 pb-20 bg-transparent min-h-screen overflow-hidden">
       <section className="section-container relative z-10">
         <header className="flex flex-col md:flex-row md:items-end justify-between mb-24 md:mb-32 gap-10">
           <div className="max-w-3xl">

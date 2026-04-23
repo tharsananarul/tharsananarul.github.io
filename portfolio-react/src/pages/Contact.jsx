@@ -6,7 +6,7 @@ export default function Contact() {
   const linkedinUrl = "https://www.linkedin.com/in/tharsanan-arulananthaselvam/"
 
   return (
-    <main className="relative pt-24 md:pt-32 pb-20 min-h-screen bg-primary">
+    <main className="relative pt-24 md:pt-32 pb-20 bg-transparent min-h-screen overflow-hidden">
       <section className="section-container relative z-10">
         <div className="grid lg:grid-cols-2 gap-20 lg:gap-48">
           {/* Left Column: Info */}

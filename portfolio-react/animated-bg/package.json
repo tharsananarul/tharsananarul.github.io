@@ -1,0 +1,16 @@
+{
+  "name": "animated-bg",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "gsap": "^3.12.0",
+    "three": "^0.160.0",
+    "vanta": "^0.5.24",
+    "vite": "^5.0.0"
+  }
+}

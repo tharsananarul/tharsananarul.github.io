@@ -33,7 +33,7 @@ export default function Competences() {
   ]
 
   return (
-    <main className="relative pt-24 md:pt-32 pb-20 overflow-hidden bg-primary">
+    <main className="relative pt-24 md:pt-32 pb-20 overflow-hidden bg-transparent">
       <section className="section-container relative z-10">
         {/* Header Section with Entrance Wave */}
         <header className="max-w-3xl mb-24 md:mb-32">
