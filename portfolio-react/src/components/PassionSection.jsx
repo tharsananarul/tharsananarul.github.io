@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { Bike, Camera, Car, ArrowRight } from 'lucide-react'
+import { Bike, Camera, Gamepad2, ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { Canvas, useFrame, useLoader } from '@react-three/fiber'
 import { useRef, Suspense } from 'react'
@@ -30,11 +30,11 @@ function Car3D() {
 
 const passions = [
   {
-    id: "bmw",
-    title: "BMW & Design",
-    subtitle: "Ingénierie & Performance",
-    desc: "Passionné par les lignes de la marque à l'hélice, je vois dans chaque modèle une fusion parfaite entre technologie de pointe et esthétique pure.",
-    icon: Car,
+    id: "gaming",
+    title: "Gaming",
+    subtitle: "Open World & Immersion",
+    desc: "Fan d'univers ouverts comme GTA V, Red Dead Redemption, Watch Dogs… j'aime me perdre dans des mondes immersifs où liberté et narration se rejoignent.",
+    icon: Gamepad2,
     color: "text-blue-400",
     bg: "rgba(37, 99, 235, 0.05)",
     hasMore: false
