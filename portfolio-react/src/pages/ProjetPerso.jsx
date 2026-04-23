@@ -19,6 +19,8 @@ export default function ProjetPerso() {
       items: [
         { src: `${baseUrl}images/projets-crea/captain-miller.png`, alt: 'Captain Miller Poster' },
         { src: `${baseUrl}images/projets-crea/kok-poster.jpg`, alt: 'KOK Poster' },
+        { src: `${baseUrl}images/projets-crea/cover-base-1.jpg`, alt: 'Cover Base 1' },
+        { src: `${baseUrl}images/projets-crea/cover-base-2.jpg`, alt: 'Cover Base 2' },
         { src: `${baseUrl}images/projets-crea/kok-car.png`, alt: 'KOK Car Design' },
         { src: `${baseUrl}images/projets-crea/animal.png`, alt: 'Animal Poster' },
         { src: `${baseUrl}images/projets-crea/cover-magazine.jpeg`, alt: 'Cover Magazine' },
