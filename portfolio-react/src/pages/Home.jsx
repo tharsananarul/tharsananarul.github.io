@@ -190,7 +190,7 @@ export default function Home() {
             <motion.div
               animate={{ y: [0, -20, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="relative w-full max-w-[320px] sm:max-w-[450px] lg:max-w-[600px] group"
+              className="relative w-full max-w-[400px] sm:max-w-[550px] lg:max-w-[800px] xl:max-w-[900px] group scale-110 lg:scale-125 origin-center lg:origin-right lg:translate-x-20 xl:translate-x-32"
               style={{ 
                 x: mousePos.x * 0.5, 
                 y: mousePos.y * 0.5,
