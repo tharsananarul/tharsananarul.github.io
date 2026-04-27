@@ -57,22 +57,25 @@ export default function PassionSection() {
 
   return (
     <section className="relative py-24 md:py-32 overflow-hidden bg-transparent border-y border-white/5">
-      {/* Video Background */}
-      <div className="absolute inset-0 overflow-hidden">
+      {/* Video Background with Mask Image for perfect blending */}
+      <div 
+        className="absolute inset-0 overflow-hidden pointer-events-none"
+        style={{
+          WebkitMaskImage: 'radial-gradient(ellipse at center, black 40%, transparent 95%)',
+          maskImage: 'radial-gradient(ellipse at center, black 40%, transparent 95%)'
+        }}
+      >
         <video
           ref={videoRef}
           autoPlay
           muted
           loop
           playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{ filter: 'brightness(0.45) saturate(0.9)' }}
+          className="absolute inset-0 w-full h-full object-cover object-center"
+          style={{ filter: 'brightness(0.75) saturate(1.1)' }}
         >
           <source src={`${baseUrl}videos/bmw-bg.mp4`} type="video/mp4" />
         </video>
-        {/* Gradient overlays for readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-primary via-transparent to-primary" />
-        <div className="absolute inset-0 bg-primary/20" />
       </div>
 
       <div className="section-container relative z-10">

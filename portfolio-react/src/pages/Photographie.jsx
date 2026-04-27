@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { X, ChevronLeft, ChevronRight, Camera } from 'lucide-react'
 import { motion } from 'framer-motion'
+import PageHero from '../components/PageHero'
 
 const PHOTO_DATA = [
   { file: 'IMG_1717', ext: 'jpg' },
@@ -184,31 +185,13 @@ export default function Photographie() {
   ) : null
 
   return (
-    <main className="relative bg-primary min-h-screen">
-      {/* Background grid */}
-      <div className="absolute inset-0 pointer-events-none -z-10">
-        <div className="grid-overlay" />
-      </div>
-
-      {/* Header */}
-      <div className="section-container pt-32 pb-8 md:pt-48 md:pb-16">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <p className="text-accent-light font-bold tracking-[0.3em] uppercase text-[10px] md:text-xs mb-4 flex items-center gap-3">
-            <span className="w-8 h-px bg-accent-light/40" />
-            Galerie
-          </p>
-          <h1 className="text-[1.6rem] md:text-7xl font-black tracking-tight md:tracking-tighter mb-4">
-            Photo<span className="text-accent-light italic">graphie.</span>
-          </h1>
-          <p className="text-text-muted text-sm md:text-base max-w-lg mt-4">
-            À travers l'objectif, je cherche à capturer l'invisible — {PHOTO_DATA.length} instants sélectionnés.
-          </p>
-        </motion.div>
-      </div>
+    <main className="relative bg-transparent min-h-screen">
+      <PageHero
+        tag="Galerie"
+        title={<>Photo<span className="text-accent-light italic">graphie.</span></>}
+        subtitle={`À travers l'objectif, je cherche à capturer l'invisible — ${PHOTO_DATA.length} instants sélectionnés.`}
+        compact
+      />
 
       {/* Photo Grid */}
       <div className="section-container pb-32">

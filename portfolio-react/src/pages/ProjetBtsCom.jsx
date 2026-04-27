@@ -37,7 +37,7 @@ export default function ProjetBtsCom() {
   ]
 
   return (
-    <main className="relative bg-primary">
+    <main className="relative bg-transparent min-h-screen">
       {/* Background patterns */}
       <div className="absolute inset-0 pointer-events-none -z-10">
         <div className="grid-overlay" />

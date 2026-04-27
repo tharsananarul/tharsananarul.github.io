@@ -94,13 +94,13 @@ function VantaNet() {
 
 export default function Background() {
   return (
-    <div className="fixed inset-0 -z-50 overflow-hidden pointer-events-none bg-[#010409]">
+    <div className="fixed inset-0 -z-50 overflow-hidden pointer-events-none bg-primary">
       <div className="absolute inset-0">
         <Canvas camera={{ position: [0, 0, 35], fov: 60 }}>
           <Suspense fallback={null}>
             <ambientLight intensity={0.5} />
             <VantaNet />
-            <fog attach="fog" args={['#010409', 10, 80]} />
+            <fog attach="fog" args={['#080e1a', 10, 80]} />
           </Suspense>
         </Canvas>
       </div>

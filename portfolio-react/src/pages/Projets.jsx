@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { ArrowRight, ExternalLink, Filter } from 'lucide-react'
 import Magnetic from '../components/Magnetic'
+import PageHero from '../components/PageHero'
 
 const projects = [
   {
@@ -58,38 +59,14 @@ export default function Projets() {
   const baseUrl = import.meta.env.BASE_URL
 
   return (
-    <main className="relative pt-24 md:pt-32 pb-20 bg-transparent min-h-screen overflow-hidden">
-      <section className="section-container relative z-10">
-        <header className="max-w-4xl mb-16 md:mb-24">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <p className="text-accent-light font-bold tracking-[0.3em] uppercase mb-4 text-[10px] md:text-xs flex items-center gap-3">
-              <span className="w-8 h-px bg-accent-light/60" />
-              Réalisations
-            </p>
-          </motion.div>
-          <motion.h1 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="text-4xl md:text-8xl font-extrabold mb-6 tracking-tighter leading-[1]"
-          >
-            Découvrez <br />
-            <span className="highlight italic">mon univers.</span>
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            className="text-sm md:text-xl text-text-muted leading-relaxed max-w-2xl font-medium"
-          >
-            Une collection de projets variés, allant du design d'interface à la stratégie de communication, illustrant ma polyvalence et ma passion pour la création.
-          </motion.p>
-        </header>
+    <main className="relative pb-20 bg-transparent min-h-screen overflow-hidden">
+      <PageHero
+        tag="Réalisations"
+        title={<>Découvrez <br /><span className="highlight italic">mon univers.</span></>}
+        subtitle="Une collection de projets variés, allant du design d'interface à la stratégie de communication, illustrant ma polyvalence et ma passion pour la création."
+      />
 
+      <section className="section-container relative z-10">
         <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-10">
           {projects.map((project, i) => (
             <motion.div

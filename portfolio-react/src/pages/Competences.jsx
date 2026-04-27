@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Wrench, Shield, Zap, Globe, Layout, Palette, Code2, Globe2, Sparkles } from 'lucide-react'
 import Magnetic from '../components/Magnetic'
+import PageHero from '../components/PageHero'
 
 const skills = [
   { title: "Design Graphique", icon: <Palette size={24} />, desc: "Maîtrise de la suite Adobe (Ps, Ai, Id) pour créer des visuels percutants." },
@@ -33,38 +34,14 @@ export default function Competences() {
   ]
 
   return (
-    <main className="relative pt-24 md:pt-32 pb-20 overflow-hidden bg-transparent">
-      <section className="section-container relative z-10">
-        {/* Header Section with Entrance Wave */}
-        <header className="max-w-3xl mb-24 md:mb-32">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <p className="text-accent-light font-bold tracking-[0.3em] uppercase mb-6 text-xs md:text-sm flex items-center gap-3">
-              <span className="w-8 h-px bg-accent-light/60" />
-              Expertise
-            </p>
-          </motion.div>
-          <motion.h1 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="text-[1.5rem] md:text-7xl font-black mb-8 tracking-tight md:tracking-tighter leading-[1.2] md:leading-[0.95]"
-          >
-            Mes <span className="text-accent-light italic">Compétences.</span>
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            className="text-xl text-text-muted leading-relaxed"
-          >
-            Un mix polyvalent entre design créatif, communication stratégique et développement technique.
-          </motion.p>
-        </header>
+    <main className="relative pb-20 overflow-hidden bg-transparent">
+      <PageHero
+        tag="Expertise"
+        title={<>Mes <span className="text-accent-light italic">Compétences.</span></>}
+        subtitle="Un mix polyvalent entre design créatif, communication stratégique et développement technique."
+      />
 
+      <section className="section-container relative z-10">
         {/* Core Skills Grid */}
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8 mb-32">
           {skills.map((skill, i) => (

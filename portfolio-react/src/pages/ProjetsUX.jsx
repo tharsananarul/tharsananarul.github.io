@@ -35,7 +35,7 @@ export default function ProjetsUX() {
   ]
 
   return (
-    <main className="relative bg-transparent overflow-hidden">
+    <main className="relative bg-transparent min-h-screen overflow-hidden">
       {/* Background patterns */}
       <div className="absolute inset-0 pointer-events-none -z-10">
         <div className="grid-overlay" />

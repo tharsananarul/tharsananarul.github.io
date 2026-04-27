@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Download, GraduationCap, Briefcase, MapPin, Sparkles } from 'lucide-react'
 import Magnetic from '../components/Magnetic'
+import PageHero from '../components/PageHero'
 
 const education = [
   {
@@ -37,7 +38,7 @@ const experiences = [
     ]
   },
   {
-    period: "Août 2024 — Présent",
+    period: "Août 2024 — Janvier 2026",
     title: "Chargé de Clientèle",
     company: "La Banque Postale",
     location: "Le Blanc-Mesnil",
@@ -77,51 +78,30 @@ const experiences = [
 
 export default function CV() {
   return (
-    <main className="relative pt-24 md:pt-32 pb-20 bg-transparent min-h-screen overflow-hidden">
-      <section className="section-container relative z-10">
-        <header className="flex flex-col md:flex-row md:items-end justify-between mb-24 md:mb-32 gap-10">
-          <div className="max-w-3xl">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <p className="text-accent-light font-bold tracking-[0.3em] uppercase mb-6 text-xs md:text-sm flex items-center gap-3">
-                <span className="w-8 h-px bg-accent-light/60" />
-                Expérience & Formation
-              </p>
-            </motion.div>
-            <motion.h1 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="text-4xl md:text-8xl font-extrabold mb-8 tracking-tighter leading-[0.95]"
-            >
-              Mon <span className="highlight italic">Parcours.</span>
-            </motion.h1>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-              className="text-xl text-text-muted leading-relaxed max-w-xl"
-            >
-              Une trajectoire mêlant expertise technique, communication stratégique et passion pour le design.
-            </motion.p>
-          </div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-          >
-            <Magnetic>
-              <a href="cv-v3.pdf" download className="btn-premium gap-3 text-lg px-10 py-5 group">
-                <Download size={22} className="group-hover:translate-y-1 transition-transform" /> 
-                Télécharger mon CV
-              </a>
-            </Magnetic>
-          </motion.div>
-        </header>
+    <main className="relative pb-20 bg-transparent min-h-screen overflow-hidden">
+      <PageHero
+        tag="Expérience & Formation"
+        title={<>Mon <span className="highlight italic">Parcours.</span></>}
+        subtitle="Une trajectoire mêlant expertise technique, communication stratégique et passion pour le design."
+      />
 
+      {/* Download button */}
+      <div className="section-container -mt-8 md:-mt-12 mb-16 md:mb-24 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.4, duration: 0.8 }}
+        >
+          <Magnetic>
+            <a href="cv-v3.pdf" download className="btn-premium gap-3 text-lg px-10 py-5 group">
+              <Download size={22} className="group-hover:translate-y-1 transition-transform" /> 
+              Télécharger mon CV
+            </a>
+          </Magnetic>
+        </motion.div>
+      </div>
+
+      <section className="section-container relative z-10">
         <div className="grid lg:grid-cols-[1fr_1.5fr] gap-16 lg:gap-32">
           {/* EDUCATION */}
           <div className="space-y-16">

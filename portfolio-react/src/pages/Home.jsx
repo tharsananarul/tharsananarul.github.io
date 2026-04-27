@@ -1,11 +1,13 @@
 import { motion, useScroll, useTransform, useInView } from 'framer-motion'
 import { ArrowRight, Code, Layout, Palette, Terminal, ExternalLink, Download, ArrowUpRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, lazy, Suspense } from 'react'
 import Magnetic from '../components/Magnetic'
 import PassionSection from '../components/PassionSection'
 import InfiniteMarquee from '../components/InfiniteMarquee'
 import Counter from '../components/Counter'
+
+const HeroScene = lazy(() => import('../components/HeroScene'))
 
 // --- Components ---
 
@@ -114,131 +116,178 @@ export default function Home() {
       </div>
 
       {/* HERO SECTION */}
-      <section ref={heroRef} className="min-h-screen flex items-center pt-32 pb-16 md:pt-0 md:pb-0 relative">
-        <div className="section-container grid lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20 items-center relative z-10">
-          <motion.div
-            style={{ opacity, scale }}
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.8 }}
-            >
-              <p className="text-accent-light font-bold tracking-[0.3em] uppercase mb-6 md:mb-8 text-[10px] md:text-sm flex items-center gap-3">
-                <span className="w-8 h-px bg-accent-light/60" />
-                BTS Communication · Design Graphique
-              </p>
-            </motion.div>
-
-            <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold leading-[1.1] mb-6 md:mb-8 tracking-tighter text-white">
-              <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              >
-                Bonjour,<br />je suis<br />
-              </motion.div>
-              <motion.span 
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="highlight block mt-2"
-              >
-                <TextScramble text="Tharsanan" />
-              </motion.span>
-            </h1>
-
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7, duration: 0.8 }}
-              className="text-sm md:text-xl text-text-muted mb-8 md:mb-10 max-w-lg leading-relaxed font-medium"
-            >
-              Étudiant en 2ème année de BTS Communication au Lycée Jacques Brel. 
-              Je transforme les idées en expériences visuelles mémorables. 🚀
-            </motion.p>
-
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.9, duration: 0.8 }}
-              className="flex flex-col sm:flex-row gap-4 md:gap-5"
-            >
-              <Magnetic>
-                <Link to="/projets" className="btn-premium gap-3 group w-full sm:w-auto">
-                  Découvrir mes projets
-                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </Magnetic>
-              <Magnetic>
-                <Link to="/contact" className="btn-outline w-full sm:w-auto">
-                  Me contacter
-                </Link>
-              </Magnetic>
-            </motion.div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 100, scale: 0.8, rotate: 5 }}
-            animate={{ opacity: 1, x: 0, scale: 1, rotate: 0 }}
-            transition={{ type: "spring", stiffness: 50, damping: 20, delay: 0.2 }}
-            className="relative flex justify-center lg:justify-end mt-12 lg:mt-0"
-          >
-            <motion.div
-              animate={{ y: [0, -30, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="relative w-full max-w-[240px] sm:max-w-[320px] lg:max-w-[800px] xl:max-w-[900px] group scale-110 lg:scale-125 origin-center lg:origin-right lg:translate-x-20 xl:translate-x-32"
-              style={{ 
-                x: mousePos.x * 0.5, 
-                y: mousePos.y * 0.5,
-              }}
-            >
-              <img 
-                src={`${baseUrl}images/site/profile-new.png`} 
-                alt="Tharsanan" 
-                className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105 drop-shadow-[0_0_30px_rgba(255,255,255,0.1)]"
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                }}
-              />
-            </motion.div>
-          </motion.div>
+      <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        
+        {/* 3D Scene Background */}
+        <div className="absolute inset-0 z-0">
+          <Suspense fallback={
+            <div className="absolute inset-0 bg-primary flex items-center justify-center">
+              <div className="w-12 h-12 border-2 border-accent-light/30 border-t-accent-light rounded-full animate-spin" />
+            </div>
+          }>
+            <HeroScene />
+          </Suspense>
         </div>
+
+        {/* Dark gradient overlays for text readability */}
+        <div className="absolute inset-0 z-[1] pointer-events-none">
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/40 via-transparent to-primary" />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/50 via-transparent to-primary/50" />
+          <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-primary to-transparent" />
+        </div>
+
+        {/* Hero Text Content */}
+        <motion.div 
+          style={{ opacity, scale }}
+          className="relative z-10 section-container text-center flex flex-col items-center pt-20 md:pt-0"
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <p className="text-accent-light font-bold tracking-[0.4em] uppercase mb-6 md:mb-8 text-[9px] md:text-xs flex items-center justify-center gap-3">
+              <span className="w-8 h-px bg-accent-light/60" />
+              BTS Communication · Design Graphique
+              <span className="w-8 h-px bg-accent-light/60" />
+            </p>
+          </motion.div>
+
+          <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-extrabold leading-[1] mb-6 md:mb-8 tracking-tighter text-white">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            >
+              Bonjour,<br />je suis<br />
+            </motion.div>
+            <motion.span 
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              className="highlight block mt-2"
+            >
+              <TextScramble text="Tharsanan" />
+            </motion.span>
+          </h1>
+
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9, duration: 0.8 }}
+            className="text-sm md:text-xl text-text-muted mb-10 md:mb-12 max-w-2xl leading-relaxed font-medium mx-auto"
+          >
+            Étudiant en 2ème année de BTS Communication au Lycée Jacques Brel. 
+            Je transforme les idées en expériences visuelles mémorables. 🚀
+          </motion.p>
+
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.1, duration: 0.8 }}
+            className="flex flex-col sm:flex-row gap-4 md:gap-5 justify-center"
+          >
+            <Magnetic>
+              <Link to="/projets" className="btn-premium gap-3 group w-full sm:w-auto px-8">
+                Découvrir mes projets
+                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </Magnetic>
+            <Magnetic>
+              <Link to="/contact" className="btn-outline w-full sm:w-auto px-8">
+                Me contacter
+              </Link>
+            </Magnetic>
+          </motion.div>
+        </motion.div>
+
+        {/* Scroll indicator */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2, duration: 1 }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none z-10"
+        >
+          <span className="text-[8px] uppercase tracking-widest text-text-muted font-bold">Scroll</span>
+          <div className="w-[1px] h-12 bg-gradient-to-b from-text-muted to-transparent" />
+        </motion.div>
       </section>
 
       {/* QUICK ABOUT / STATS SECTION */}
-      <section className="bg-transparent relative py-20 md:py-32">
-        <div className="section-container grid lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <p className="text-accent-light font-bold tracking-widest uppercase text-[10px] md:text-xs mb-4 flex items-center gap-3">
-              <span className="w-6 h-px bg-accent-light/60" />
-              Qui suis-je ?
-            </p>
-            <h2 className="text-2xl md:text-6xl font-bold mb-6 md:mb-8 tracking-tighter leading-tight">
-              Un parcours entre <br />
-              <span className="highlight italic">technique et communication</span>
-            </h2>
-            <div className="space-y-4 md:space-y-6 text-text-muted text-sm md:text-lg leading-relaxed max-w-xl">
-              <p>
-                Après un début en BUT Métiers du Multimédia et de l'Internet, j'ai choisi de me spécialiser en communication. 
-                Ce parcours m'a permis de développer à la fois des compétences techniques et une vision créative orientée vers le digital.
-              </p>
-            </div>
-            <Link to="/cv" className="mt-8 md:mt-10 inline-flex items-center gap-2 font-bold text-accent-light hover:text-white transition-colors group">
-              Voir mon parcours complet 
-              <ArrowUpRight size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-            </Link>
-          </motion.div>
+      <section className="bg-transparent relative py-20 md:py-32 overflow-hidden">
+        {/* Decorative accent line */}
+        <motion.div
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+          className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent-light/10 to-transparent"
+        />
+        
+        <div className="section-container relative z-10">
+          {/* Top Row: Photo + Text */}
+          <div className="grid lg:grid-cols-[auto_1fr] gap-12 lg:gap-20 items-center mb-16 md:mb-24">
+            {/* Profile Photo */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8, x: -30 }}
+              whileInView={{ opacity: 1, scale: 1, x: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ type: "spring", stiffness: 50, damping: 20 }}
+              className="relative mx-auto lg:mx-0 flex-shrink-0"
+            >
+              {/* Glow behind photo */}
+              <div className="absolute -inset-6 bg-accent/20 blur-[60px] rounded-full" />
+              
+              {/* Floating animation wrapper with mouse tracking */}
+              <motion.div
+                animate={{ y: [0, -30, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                style={{ 
+                  x: mousePos.x * 0.5, 
+                  y: mousePos.y * 0.5,
+                }}
+              >
+                <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 group">
+                  <img 
+                    src={`${baseUrl}images/site/profile-new.png`}
+                    alt="Tharsanan"
+                    className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105 drop-shadow-[0_0_30px_rgba(255,255,255,0.1)]"
+                  />
+                </div>
+              </motion.div>
+            </motion.div>
 
-          <div className="grid grid-cols-2 gap-4 md:gap-6">
+            {/* Text */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+              className="text-center lg:text-left"
+            >
+              <p className="text-accent-light font-bold tracking-widest uppercase text-[10px] md:text-xs mb-4 flex items-center gap-3 justify-center lg:justify-start">
+                <span className="w-6 h-px bg-accent-light/60" />
+                Qui suis-je ?
+              </p>
+              <h2 className="text-2xl md:text-6xl font-bold mb-6 md:mb-8 tracking-tighter leading-tight">
+                Un parcours entre <br />
+                <span className="highlight italic">technique et communication</span>
+              </h2>
+              <div className="space-y-4 md:space-y-6 text-text-muted text-sm md:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0">
+                <p>
+                  Après un début en BUT Métiers du Multimédia et de l'Internet, j'ai choisi de me spécialiser en communication. 
+                  Ce parcours m'a permis de développer à la fois des compétences techniques et une vision créative orientée vers le digital.
+                </p>
+              </div>
+              <Link to="/cv" className="mt-8 md:mt-10 inline-flex items-center gap-2 font-bold text-accent-light hover:text-white transition-colors group">
+                Voir mon parcours complet 
+                <ArrowUpRight size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              </Link>
+            </motion.div>
+          </div>
+
+          {/* Stats Row */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             <StatCard number="4" label="Ans d'études" delay={0.1} duration={2000} />
             <StatCard number="1" label="An d'expérience pro" delay={0.2} duration={2000} />
             <StatCard number="6" label="Logiciels maîtrisés" delay={0.3} duration={2000} />
