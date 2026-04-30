@@ -12,7 +12,7 @@ const icons = [Sparkles, Star, Zap]
 
 export default function InfiniteMarquee() {
   return (
-    <div className="py-8 md:py-12 overflow-hidden bg-[var(--color-creative-cyan)] relative border-y-4 border-black shadow-[0_10px_30px_rgba(0,255,255,0.3)]">
+    <div className="py-8 md:py-12 overflow-hidden bg-[var(--color-creative-blue)] relative border-y-4 border-black shadow-[0_10px_30px_rgba(14,165,233,0.3)]">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-plus-pattern opacity-[0.05] pointer-events-none" />
       
@@ -42,8 +42,8 @@ export default function InfiniteMarquee() {
       </div>
 
       {/* Decorative gradient overlays for smooth fade */}
-      <div className="absolute inset-y-0 left-0 w-32 md:w-64 bg-gradient-to-r from-[var(--color-creative-cyan)] to-transparent z-10" />
-      <div className="absolute inset-y-0 right-0 w-32 md:w-64 bg-gradient-to-l from-[var(--color-creative-cyan)] to-transparent z-10" />
+      <div className="absolute inset-y-0 left-0 w-32 md:w-64 bg-gradient-to-r from-[var(--color-creative-blue)] to-transparent z-10" />
+      <div className="absolute inset-y-0 right-0 w-32 md:w-64 bg-gradient-to-l from-[var(--color-creative-blue)] to-transparent z-10" />
     </div>
   )
 }

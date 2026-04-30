@@ -21,7 +21,7 @@ export default function Footer() {
               Communication digitale & design graphique.
             </p>
             <div className="flex items-center gap-5">
-              <a href="https://www.linkedin.com/in/tharsanan-arulananthaselvam/" target="_blank" rel="noreferrer" className="p-3 rounded-none bg-white/5 border-2 border-black shadow-[4px_4px_0_0_#000] hover:bg-[var(--color-creative-cyan)] transition-all hover:text-white" title="LinkedIn">
+              <a href="https://www.linkedin.com/in/tharsanan-arulananthaselvam/" target="_blank" rel="noreferrer" className="p-3 rounded-none bg-white/5 border-2 border-black shadow-[4px_4px_0_0_#000] hover:bg-[var(--color-creative-blue)] transition-all hover:text-white" title="LinkedIn">
                 <Linkedin size={20} />
               </a>
               <a href="https://github.com/tharsananarul" target="_blank" rel="noreferrer" className="p-3 rounded-none bg-white/5 border-2 border-black shadow-[4px_4px_0_0_#000] hover:bg-[var(--color-creative-blue)] transition-all hover:text-white" title="GitHub">
@@ -36,15 +36,15 @@ export default function Footer() {
               <ul className="space-y-4 text-white text-sm md:text-base font-bold uppercase tracking-widest opacity-80">
                 <li><Link to="/" className="hover:text-[var(--color-creative-blue)] transition-colors">Accueil</Link></li>
                 <li><Link to="/projets" className="hover:text-[var(--color-creative-yellow)] transition-colors">Projets</Link></li>
-                <li><Link to="/cv" className="hover:text-[var(--color-creative-cyan)] transition-colors">CV</Link></li>
+                <li><Link to="/cv" className="hover:text-[var(--color-creative-orange)] transition-colors">CV</Link></li>
                 <li><Link to="/competences" className="hover:text-[var(--color-creative-blue)] transition-colors">Compétences</Link></li>
               </ul>
             </div>
             <div>
-              <h4 className="inline-block px-3 py-1 bg-[var(--color-creative-cyan)] text-black font-black text-lg md:text-xl uppercase mb-8 rotate-[2deg] border-2 border-black shadow-[4px_4px_0_0_#000]">Contact</h4>
+              <h4 className="inline-block px-3 py-1 bg-[var(--color-creative-orange)] text-black font-black text-lg md:text-xl uppercase mb-8 rotate-[2deg] border-2 border-black shadow-[4px_4px_0_0_#000]">Contact</h4>
               <ul className="space-y-4 text-white text-sm md:text-base font-bold tracking-tight opacity-80">
                 <li><a href="mailto:tharsananarul@gmail.com" className="hover:text-[var(--color-creative-blue)] transition-colors block break-all">tharsananarul@gmail.com</a></li>
-                <li><a href="tel:0749878775" className="hover:text-[var(--color-creative-cyan)] transition-colors">07 49 87 87 75</a></li>
+                <li><a href="tel:0749878775" className="hover:text-[var(--color-creative-orange)] transition-colors">07 49 87 87 75</a></li>
               </ul>
             </div>
           </div>

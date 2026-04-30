@@ -412,7 +412,7 @@ export default function Home() {
                   className="w-full h-full object-cover"
                   skeletonClassName="opacity-20"
                 />
-                <div className={`absolute top-2 right-2 sm:top-4 sm:right-4 text-black font-black uppercase px-2 py-0.5 sm:px-3 sm:py-1 text-[7px] sm:text-[10px] md:text-xs border sm:border-2 border-black rotate-[-5deg] ${i === 0 ? 'bg-[var(--color-creative-green)]' : 'bg-[var(--color-creative-orange)] text-white'}`}>
+                <div className={`absolute top-2 right-2 sm:top-4 sm:right-4 text-black font-black uppercase px-2 py-0.5 sm:px-3 sm:py-1 text-[7px] sm:text-[10px] md:text-xs border sm:border-2 border-black rotate-[-5deg] ${i === 0 ? 'bg-[var(--color-creative-blue)]' : 'bg-[var(--color-creative-orange)] text-white'}`}>
                   {project.category}
                 </div>
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">

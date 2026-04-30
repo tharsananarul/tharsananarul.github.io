@@ -61,7 +61,7 @@ export default function ProjetsUX() {
           >
             <h1 className="text-5xl md:text-9xl font-black text-white tracking-tighter uppercase relative inline-block">
               UI/UX <br />
-              <span className="text-[var(--color-creative-cyan)] editorial-title-outline mt-2 inline-block">Works.</span>
+              <span className="text-[var(--color-creative-blue)] editorial-title-outline mt-2 inline-block">Works.</span>
               <div className="absolute -top-10 -right-20 sticker-shape sticker-yellow rotate-[12deg] hidden md:block">Design</div>
             </h1>
           </motion.div>
@@ -128,7 +128,7 @@ export default function ProjetsUX() {
             </a>
           </div>
         </div>
-        <MosaicGrid sections={[{ items: futsalScreens }]} accentColor="#22d3ee" />
+        <MosaicGrid sections={[{ items: futsalScreens }]} accentColor="#0ea5e9" />
       </section>
 
       {/* Case Studies */}
@@ -145,7 +145,7 @@ export default function ProjetsUX() {
             </a>
           </div>
         </div>
-        <MosaicGrid sections={[{ items: btsRevision }]} accentColor="#22d3ee" />
+        <MosaicGrid sections={[{ items: btsRevision }]} accentColor="#0ea5e9" />
       </section>
 
       <section className="section-container py-20 md:py-32 border-t border-white/5">
@@ -161,7 +161,7 @@ export default function ProjetsUX() {
             </a>
           </div>
         </div>
-        <MosaicGrid sections={[{ items: hopePower }]} accentColor="#22d3ee" />
+        <MosaicGrid sections={[{ items: hopePower }]} accentColor="#0ea5e9" />
       </section>
 
       {/* Next Project */}

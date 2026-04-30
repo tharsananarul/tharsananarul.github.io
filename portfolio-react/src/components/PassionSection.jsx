@@ -10,8 +10,8 @@ const passions = [
     subtitle: "Open World & Immersion",
     desc: "Passionné par les univers ouverts comme GTA V, Red Dead Redemption ou Watch Dogs, j'apprécie les expériences immersives où narration et liberté de jeu se complètent.",
     icon: Gamepad2,
-    color: "text-[var(--color-creative-cyan)]",
-    bg: "rgba(34, 211, 238, 0.1)",
+    color: "text-[var(--color-creative-blue)]",
+    bg: "rgba(14, 165, 233, 0.1)",
     hasMore: false
   },
   {
@@ -87,7 +87,7 @@ export default function PassionSection() {
 
 
       {/* Frame accents */}
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[var(--color-creative-cyan)] to-transparent opacity-20" />
+      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[var(--color-creative-blue)] to-transparent opacity-20" />
       <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[var(--color-creative-blue)] to-transparent opacity-20" />
 
       <div className="section-container relative z-10">
@@ -98,7 +98,7 @@ export default function PassionSection() {
             viewport={{ once: true }}
           >
             <p className="text-white font-black tracking-[0.3em] uppercase text-[10px] md:text-xs mb-4 flex items-center gap-3">
-              <span className="w-8 h-1 bg-[var(--color-creative-cyan)]" />
+              <span className="w-8 h-1 bg-[var(--color-creative-blue)]" />
               En dehors du digital
             </p>
             <h2 className="text-4xl md:text-7xl font-black mb-4 md:mb-8 tracking-tighter uppercase text-white relative inline-block">
@@ -129,7 +129,7 @@ export default function PassionSection() {
             )
 
             const cardClasses = "group p-6 md:p-10 rounded-none border-2 md:border-4 border-black shadow-[4px_4px_0_0_#000] md:shadow-[8px_8px_0_0_#000] hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0_0_#000] md:hover:shadow-[4px_4px_0_0_#000] transition-all duration-500 relative overflow-hidden bg-black/40 backdrop-blur-xl"
-            const accentStyle = { borderTopColor: p.color.includes('cyan') ? 'var(--color-creative-cyan)' : p.color.includes('yellow') ? 'var(--color-creative-yellow)' : 'var(--color-creative-blue)' }
+            const accentStyle = { borderTopColor: p.color.includes('blue') ? 'var(--color-creative-blue)' : p.color.includes('yellow') ? 'var(--color-creative-yellow)' : 'var(--color-creative-orange)' }
 
             return p.hasMore ? (
               <motion.div
