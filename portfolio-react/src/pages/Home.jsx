@@ -154,7 +154,7 @@ export default function Home() {
             initial={{ scale: 0, rotate: 20 }}
             animate={{ scale: 1, rotate: -15 }}
             transition={{ delay: 1.7, type: "spring" }}
-            className="absolute sticker-shape sticker-blue -top-8 sm:-top-12 md:top-[10%] left-0 sm:left-6 md:left-12 rotate-[-15deg] z-30 scale-75 sm:scale-100 origin-top-left"
+            className="absolute sticker-shape sticker-blue top-8 sm:top-4 md:top-[15%] left-2 sm:left-6 md:left-12 rotate-[-15deg] z-30 scale-75 sm:scale-100 origin-top-left"
           >
             Portfolio
           </motion.div>
