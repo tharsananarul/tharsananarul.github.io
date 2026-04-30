@@ -57,13 +57,13 @@ export default function Contact() {
                   transition={{ delay: 0.1 + i * 0.1, duration: 0.8 }}
                 >
                   <Magnetic>
-                    <a href={item.href} target={item.href.startsWith('http') ? "_blank" : "_self"} rel="noreferrer" className="flex items-center gap-6 group">
-                      <div className="p-4 rounded-none bg-white border-4 border-black group-hover:bg-[var(--color-creative-blue)] transition-all shadow-[6px_6px_0_0_#000] group-hover:scale-110 duration-500">
+                    <a href={item.href} target={item.href.startsWith('http') ? "_blank" : "_self"} rel="noreferrer" className="flex items-center gap-4 sm:gap-6 group">
+                      <div className="shrink-0 p-3 sm:p-4 rounded-none bg-white border-4 border-black group-hover:bg-[var(--color-creative-blue)] transition-all shadow-[6px_6px_0_0_#000] group-hover:scale-110 duration-500">
                         <div className="text-black group-hover:text-white">{item.icon}</div>
                       </div>
-                      <div>
+                      <div className="min-w-0">
                         <p className="text-[10px] text-white font-black uppercase tracking-widest mb-1">{item.label}</p>
-                        <p className="text-[11px] sm:text-sm md:text-lg font-black text-white group-hover:text-[var(--color-creative-cyan)] transition-colors uppercase tracking-tighter break-words hyphens-auto">{item.val}</p>
+                        <p className="text-sm sm:text-base md:text-lg font-black text-white group-hover:text-[var(--color-creative-cyan)] transition-colors tracking-tight truncate">{item.val}</p>
                       </div>
                     </a>
                   </Magnetic>

@@ -149,12 +149,12 @@ export default function Home() {
             </p>
           </motion.div>
 
-          {/* Decorative Stickers positioned around the whole text block */}
+          {/* Decorative Stickers - pointer-events-none so they never block text/clicks */}
           <motion.div 
             initial={{ scale: 0, rotate: 20 }}
             animate={{ scale: 1, rotate: -15 }}
             transition={{ delay: 1.7, type: "spring" }}
-            className="absolute sticker-shape sticker-blue top-8 sm:top-4 md:top-[15%] left-2 sm:left-6 md:left-12 rotate-[-15deg] z-30 scale-75 sm:scale-100 origin-top-left"
+            className="absolute sticker-shape sticker-blue top-8 sm:top-4 md:top-[15%] left-2 sm:left-6 md:left-12 rotate-[-15deg] z-10 scale-75 sm:scale-100 origin-top-left pointer-events-none select-none"
           >
             Portfolio
           </motion.div>
@@ -163,7 +163,7 @@ export default function Home() {
             initial={{ scale: 0, rotate: -20 }}
             animate={{ scale: 1, rotate: 10 }}
             transition={{ delay: 1.5, type: "spring" }}
-            className="absolute sticker-shape sticker-yellow bottom-[20%] sm:bottom-[25%] md:bottom-[30%] right-0 sm:right-6 md:right-12 rotate-[10deg] z-30 scale-75 sm:scale-100 origin-bottom-right"
+            className="absolute sticker-shape sticker-yellow bottom-[20%] sm:bottom-[25%] md:bottom-[30%] right-0 sm:right-6 md:right-12 rotate-[10deg] z-10 scale-75 sm:scale-100 origin-bottom-right pointer-events-none select-none"
           >
             Creative
           </motion.div>
