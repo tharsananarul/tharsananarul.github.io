@@ -117,7 +117,7 @@ export default function Home() {
       </div>
 
       {/* HERO SECTION */}
-      <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section ref={heroRef} className="relative min-h-[100svh] flex flex-col justify-start md:justify-center overflow-hidden pt-32 pb-16 md:pt-0 md:pb-0">
         
         {/* Creative Abstract Background */}
         <div className="absolute inset-0 z-0 overflow-hidden bg-gradient-to-b from-[#0f0c29] via-[#1e3a8a]/40 to-primary">
@@ -135,7 +135,7 @@ export default function Home() {
         {/* Hero Text Content */}
         <motion.div 
           style={{ opacity, scale }}
-          className="relative z-10 section-container text-center flex flex-col items-center pt-20 md:pt-0"
+          className="relative z-10 section-container text-center flex flex-col items-center w-full"
         >
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -154,7 +154,7 @@ export default function Home() {
             initial={{ scale: 0, rotate: 20 }}
             animate={{ scale: 1, rotate: -15 }}
             transition={{ delay: 1.7, type: "spring" }}
-            className="absolute sticker-shape sticker-blue top-[10%] sm:top-[15%] md:top-[20%] left-0 sm:left-6 md:left-12 rotate-[-15deg] z-30 scale-75 sm:scale-100 origin-top-left"
+            className="absolute sticker-shape sticker-blue -top-8 sm:-top-12 md:top-[10%] left-0 sm:left-6 md:left-12 rotate-[-15deg] z-30 scale-75 sm:scale-100 origin-top-left"
           >
             Portfolio
           </motion.div>
