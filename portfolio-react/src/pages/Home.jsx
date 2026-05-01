@@ -120,11 +120,10 @@ export default function Home() {
       <section ref={heroRef} className="relative min-h-[100svh] flex flex-col justify-start md:justify-center overflow-hidden pt-32 pb-16 md:pt-0 md:pb-0">
         
         {/* Creative Abstract Background */}
-        <div className="absolute inset-0 z-0 overflow-hidden bg-gradient-to-b from-[#0f0c29] via-[#1e3a8a]/40 to-primary">
-          <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-[var(--color-creative-yellow)] rounded-full blur-[100px] opacity-40 mix-blend-screen animate-pulse" style={{ animationDuration: '8s' }} />
-          <div className="absolute bottom-[-20%] right-[-10%] w-[60vw] h-[60vw] bg-[var(--color-creative-blue)] rounded-full blur-[120px] opacity-30 mix-blend-screen animate-pulse" style={{ animationDuration: '12s' }} />
-          <div className="absolute top-[30%] left-[60%] w-[40vw] h-[40vw] bg-[var(--color-creative-orange)] rounded-full blur-[90px] opacity-20 mix-blend-screen animate-pulse" style={{ animationDuration: '10s' }} />
-          <div className="grid-overlay opacity-30" />
+        <div className="absolute inset-0 z-0 overflow-hidden bg-gradient-to-b from-[#060a18] via-[#0a1e4a]/50 to-primary">
+          <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-[#1e3a8a] rounded-full blur-[120px] opacity-20 mix-blend-screen animate-pulse" style={{ animationDuration: '10s' }} />
+          <div className="absolute bottom-[-20%] right-[-10%] w-[60vw] h-[60vw] bg-[#0ea5e9] rounded-full blur-[140px] opacity-15 mix-blend-screen animate-pulse" style={{ animationDuration: '14s' }} />
+          <div className="grid-overlay opacity-20" />
         </div>
 
         {/* Dark gradient overlays for text readability */}
@@ -149,12 +148,12 @@ export default function Home() {
             </p>
           </motion.div>
 
-          {/* Decorative Stickers - pointer-events-none so they never block text/clicks */}
+          {/* Decorative Stickers - pointer-events-none, z-0 so they never block text/clicks */}
           <motion.div 
             initial={{ scale: 0, rotate: 20 }}
             animate={{ scale: 1, rotate: -15 }}
             transition={{ delay: 1.7, type: "spring" }}
-            className="absolute sticker-shape sticker-blue top-8 sm:top-4 md:top-[15%] left-2 sm:left-6 md:left-12 rotate-[-15deg] z-10 scale-75 sm:scale-100 origin-top-left pointer-events-none select-none"
+            className="absolute sticker-shape sticker-cyan top-8 sm:top-4 md:top-[15%] left-2 sm:left-6 md:left-12 rotate-[-15deg] z-10 scale-90 sm:scale-110 origin-top-left pointer-events-none select-none opacity-100 shadow-[4px_4px_0_0_var(--color-creative-blue)]"
           >
             Portfolio
           </motion.div>
@@ -163,7 +162,7 @@ export default function Home() {
             initial={{ scale: 0, rotate: -20 }}
             animate={{ scale: 1, rotate: 10 }}
             transition={{ delay: 1.5, type: "spring" }}
-            className="absolute sticker-shape sticker-yellow bottom-[20%] sm:bottom-[25%] md:bottom-[30%] right-0 sm:right-6 md:right-12 rotate-[10deg] z-10 scale-75 sm:scale-100 origin-bottom-right pointer-events-none select-none"
+            className="absolute sticker-shape sticker-orange bottom-[12%] sm:bottom-[15%] md:bottom-[20%] right-0 sm:right-6 md:right-12 rotate-[10deg] z-10 scale-90 sm:scale-110 origin-bottom-right pointer-events-none select-none opacity-100 shadow-[4px_4px_0_0_var(--color-creative-orange)]"
           >
             Creative
           </motion.div>
@@ -175,20 +174,19 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7, duration: 0.8 }}
-              className="text-3xl md:text-5xl font-black mb-2 md:mb-4 tracking-tighter"
+              className="text-3xl md:text-5xl font-black mb-0 md:mb-0 tracking-tighter"
             >
               Bienvenue, <br className="md:hidden" />je suis
             </motion.h2>
             
             <motion.h1 
-              className="font-heading text-[14vw] md:text-[12vw] leading-[0.8] tracking-tighter font-black uppercase mx-auto"
+              className="font-heading text-[10vw] md:text-[7.5vw] leading-[0.7] tracking-tighter font-black uppercase mx-auto"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.8, duration: 1, ease: [0.16, 1, 0.3, 1] }}
               style={{
-                color: 'transparent',
-                WebkitTextStroke: '2px white',
-                textShadow: '0 0 40px rgba(255,255,255,0.1)'
+                color: 'white',
+                textShadow: '0 0 30px rgba(14, 165, 233, 0.3)'
               }}
             >
               <span className="block hover:text-white transition-colors duration-500 cursor-default">
@@ -197,29 +195,7 @@ export default function Home() {
             </motion.h1>
           </div>
 
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.9, duration: 0.8 }}
-            className="text-lg md:text-2xl text-white mb-8 max-w-3xl leading-relaxed font-bold mx-auto opacity-90"
-          >
-            Étudiant en 2ème année de BTS Communication. 
-            Je transforme les idées en expériences visuelles mémorables. 🚀
-          </motion.p>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 1, duration: 0.8 }}
-            className="mb-10 md:mb-12"
-          >
-            <div className="inline-block bg-[var(--color-creative-yellow)] text-black px-4 sm:px-6 py-2 sm:py-3 font-black uppercase tracking-wider text-xs sm:text-sm md:text-base border-2 border-black shadow-[4px_4px_0_0_#000] rotate-[-1deg] hover:rotate-0 transition-all cursor-default">
-              🎯 À la recherche d'une alternance
-            </div>
-            <p className="text-white mt-4 font-medium text-sm md:text-lg max-w-2xl mx-auto opacity-90">
-              En <strong className="text-white font-black">Communication Digitale</strong> ou <strong className="text-white font-black">Design Graphique</strong> pour la rentrée 2026.
-            </p>
-          </motion.div>
 
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -264,7 +240,7 @@ export default function Home() {
       </section>
 
       {/* QUICK ABOUT / STATS SECTION */}
-      <section className="bg-gradient-to-b from-primary via-[#0f172a]/80 to-primary text-white relative py-20 md:py-32 overflow-hidden border-y-[6px] border-black">
+      <section className="bg-gradient-to-b from-primary via-[#0a1e4a]/40 to-primary text-white relative py-20 md:py-32 overflow-hidden border-y-[6px] border-black">
 
 
         {/* Decorative accent line */}
@@ -272,7 +248,7 @@ export default function Home() {
         
         <div className="section-container relative z-10">
           {/* Section Color Blobs */}
-          <div style={{ backgroundColor: '#ffaa00' }} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] rounded-full blur-[140px] opacity-[0.15] -z-10" />
+          <div style={{ backgroundColor: '#1e3a8a' }} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] rounded-full blur-[140px] opacity-[0.10] -z-10" />
           
 
           {/* Top Row: Photo + Text */}
@@ -305,7 +281,7 @@ export default function Home() {
                     className="w-full h-auto object-contain border-2 border-white grayscale-0 hover:grayscale transition-all duration-500 bg-[var(--color-primary)]"
                     skeletonClassName="rounded-none"
                   />
-                  <div className="sticker-shape sticker-yellow bottom-4 -left-6 rotate-[-12deg] z-20">Design</div>
+                  <div className="sticker-shape sticker-cyan bottom-4 -left-6 rotate-[-12deg] z-20">Design</div>
                   <div className="tape-effect -top-4 left-1/2 -translate-x-1/2"></div>
                 </div>
               </motion.div>
@@ -326,8 +302,8 @@ export default function Home() {
 
               <h2 className="text-3xl md:text-6xl font-black mb-6 md:mb-8 tracking-tighter leading-tight uppercase relative inline-block text-white">
                 Un parcours entre <br />
-                <span className="mt-2 inline-block" style={{ color: '#ffaa00', WebkitTextStroke: '2px white' }}>technique</span> et <br />
-                <span className="bg-[var(--color-creative-blue)] text-white px-2 mt-2 inline-block -rotate-2 border-2 border-white shadow-[4px_4px_0_0_#fff]">communication</span>
+                <span className="mt-2 inline-block text-[var(--color-creative-blue)]">technique</span> et <br />
+                <span className="bg-[var(--color-creative-orange)] text-white px-2 mt-2 inline-block -rotate-2 border-2 border-white shadow-[4px_4px_0_0_#fff]">communication</span>
               </h2>
               <div className="space-y-4 md:space-y-6 text-white/90 font-bold text-sm md:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0">
 
@@ -348,22 +324,22 @@ export default function Home() {
              {/* Decorative stickers around stats */}
              <div className="sticker-shape sticker-blue absolute -top-8 left-2 rotate-[-5deg] z-20">Analytics</div>
              
-             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-white border-[3px] border-black shadow-[6px_6px_0_0_#000] p-6 rounded-none text-center">
-                <span className="text-4xl md:text-5xl font-heading font-black text-black block mb-2"><Counter to={4} /></span>
-                <span className="text-xs font-bold uppercase tracking-widest text-gray-600">Ans d'études</span>
-             </motion.div>
-             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="bg-[var(--color-creative-yellow)] border-[3px] border-black shadow-[6px_6px_0_0_#000] p-6 rounded-none text-center relative top-4">
-                <span className="text-4xl md:text-5xl font-heading font-black text-black block mb-2"><Counter to={1} /></span>
-                <span className="text-xs font-bold uppercase tracking-widest text-black">An d'expérience</span>
-             </motion.div>
-             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="bg-[var(--color-creative-blue)] border-[3px] border-black shadow-[6px_6px_0_0_#000] p-6 rounded-none text-center relative -top-2">
-                <span className="text-4xl md:text-5xl font-heading font-black text-white block mb-2"><Counter to={6} /></span>
-                <span className="text-xs font-bold uppercase tracking-widest text-white">Logiciels</span>
-             </motion.div>
-             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }} className="bg-white border-[3px] border-black shadow-[6px_6px_0_0_#000] p-6 rounded-none text-center relative top-2">
-                <span className="text-4xl md:text-5xl font-heading font-black text-black block mb-2"><Counter to={100} suffix="%" /></span>
-                <span className="text-xs font-bold uppercase tracking-widest text-gray-600">Passionné</span>
-             </motion.div>
+             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-white/5 backdrop-blur-sm border-[3px] border-white/10 shadow-[6px_6px_0_0_var(--color-creative-blue)] p-6 rounded-none text-center">
+                 <span className="text-4xl md:text-5xl font-heading font-black text-white block mb-2"><Counter to={4} /></span>
+                 <span className="text-xs font-bold uppercase tracking-widest text-white/60">Ans d'études</span>
+              </motion.div>
+              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="bg-[var(--color-creative-orange)] border-[3px] border-black shadow-[6px_6px_0_0_#000] p-6 rounded-none text-center relative top-4">
+                 <span className="text-4xl md:text-5xl font-heading font-black text-white block mb-2"><Counter to={1} /></span>
+                 <span className="text-xs font-bold uppercase tracking-widest text-white/80">An d'expérience</span>
+              </motion.div>
+              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="bg-[var(--color-creative-blue)] border-[3px] border-black shadow-[6px_6px_0_0_#000] p-6 rounded-none text-center relative -top-2">
+                 <span className="text-4xl md:text-5xl font-heading font-black text-white block mb-2"><Counter to={6} /></span>
+                 <span className="text-xs font-bold uppercase tracking-widest text-white">Logiciels</span>
+              </motion.div>
+              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }} className="bg-white/5 backdrop-blur-sm border-[3px] border-white/10 shadow-[6px_6px_0_0_var(--color-creative-orange)] p-6 rounded-none text-center relative top-2">
+                 <span className="text-4xl md:text-5xl font-heading font-black text-white block mb-2"><Counter to={100} suffix="%" /></span>
+                 <span className="text-xs font-bold uppercase tracking-widest text-white/60">Passionné</span>
+              </motion.div>
           </div>
         </div>
       </section>
@@ -372,7 +348,7 @@ export default function Home() {
       <InfiniteMarquee />
 
       {/* FEATURED PROJECTS */}
-      <section className="bg-gradient-to-b from-primary via-[#022c22]/60 to-primary relative pb-32">
+      <section className="bg-gradient-to-b from-primary via-[#0a1e4a]/50 to-primary relative pb-32">
         <div className="section-container relative">
         <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-[var(--color-creative-blue)] rounded-full blur-[140px] opacity-[0.06] -z-10" />
 
@@ -387,7 +363,7 @@ export default function Home() {
               Projets Phares
             </p>
 
-            <h2 className="text-3xl md:text-7xl font-black mb-4 md:mb-6 tracking-tighter uppercase">
+            <h2 className="font-black mb-3 md:mb-4 tracking-tighter leading-[0.7] uppercase" style={{ fontSize: 'clamp(2.2rem, 8vw, 5.5rem)' }}>
                 Une sélection <br />
                 <span className="text-[var(--color-creative-blue)]" style={{ WebkitTextStroke: '2px white' }}>des travaux</span> <br />
                 <span className="bg-[var(--color-creative-orange)] text-white px-3 inline-block rotate-1 shadow-[4px_4px_0_0_#fff] border-2 border-white">phares</span>
@@ -469,11 +445,51 @@ export default function Home() {
         </div>
       </section>
 
+      {/* MON PROJET FUTUR SECTION */}
+      <section className="relative py-20 md:py-32 overflow-hidden bg-gradient-to-b from-primary via-[#0a1e4a]/30 to-primary border-y border-white/5">
+        <div className="absolute top-0 left-0 w-[40vw] h-[40vw] bg-[#0ea5e9] rounded-full blur-[160px] opacity-[0.05] -z-10" />
+        <div className="section-container relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="max-w-3xl mx-auto text-center"
+          >
+            <p className="text-[var(--color-creative-blue)] font-bold tracking-[0.3em] uppercase text-[11px] md:text-sm mb-6 flex items-center justify-center gap-3">
+              <span className="w-8 h-px bg-[var(--color-creative-blue)]/60" />
+              Ambition
+              <span className="w-8 h-px bg-[var(--color-creative-blue)]/60" />
+            </p>
+            <h2 className="text-3xl md:text-6xl font-black mb-8 tracking-tighter leading-tight uppercase text-white">
+              Mon Projet <br />
+              <span className="text-[var(--color-creative-blue)]" style={{ WebkitTextStroke: '2px white' }}>Futur</span>
+            </h2>
+            <p className="text-white/80 text-sm md:text-lg leading-relaxed font-medium max-w-2xl mx-auto" style={{ textTransform: 'none' }}>
+              Après l'obtention de mon BTS Communication, je souhaite poursuivre mon parcours en Licence Pro Communication. Pour accompagner ce projet, je suis à la recherche d'une alternance en Communication Digitale ou Design Graphique pour la rentrée de septembre 2026.
+            </p>
+            <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6">
+              <Link to="/cv" className="btn-premium px-8 py-4 gap-3 bg-[var(--color-creative-orange)] text-white hover:bg-[var(--color-creative-blue)] border-black shadow-[4px_4px_0_0_#000] w-full sm:w-auto justify-center">
+                <Download size={18} />
+                Voir mon CV
+              </Link>
+              <a href="https://www.linkedin.com/in/tharsanan-arulananthaselvam/" target="_blank" rel="noreferrer" className="btn-outline px-8 py-4 gap-3 border-[var(--color-creative-blue)] hover:bg-[var(--color-creative-blue)] hover:text-white w-full sm:w-auto justify-center">
+                Mon profil LinkedIn
+              </a>
+              <Link to="/contact" className="btn-premium px-8 py-4 gap-3 bg-gradient-to-br from-[var(--color-creative-orange)] to-orange-700 text-white border-none shadow-lg w-full sm:w-auto justify-center group">
+                Me contacter
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* PASSION SECTION */}
       <PassionSection />
 
       {/* CTA SECTION */}
-      <section className="bg-gradient-to-b from-primary via-[#ea580c]/20 to-primary py-32 md:py-48 relative">
+      <section className="bg-gradient-to-b from-primary via-[#0a1e4a]/20 to-primary py-32 md:py-48 relative">
         <div className="section-container text-center relative z-10">
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
@@ -491,7 +507,7 @@ export default function Home() {
             </h2>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 md:gap-10">
-              <Link to="/contact" className="btn-premium px-12 py-6 w-full sm:w-auto text-lg shadow-accent/20 bg-[var(--color-creative-orange)] hover:bg-[var(--color-creative-yellow)] text-white">
+              <Link to="/contact" className="btn-premium px-12 py-6 w-full sm:w-auto text-lg shadow-accent/20 bg-[var(--color-creative-orange)] hover:bg-[var(--color-creative-blue)] text-white">
 
                 Me contacter
               </Link>

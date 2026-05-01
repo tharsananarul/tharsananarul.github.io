@@ -48,12 +48,12 @@ export default function PageLoader() {
               animate={{ scale: 1, opacity: 1 }}
               className="text-6xl font-heading font-extrabold tracking-tighter"
             >
-              T<span className="text-accent">.</span>
+              T<span className="text-[var(--color-creative-blue)]">.</span>
             </motion.div>
             
             <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden">
               <motion.div 
-                className="h-full bg-accent"
+                className="h-full bg-[var(--color-creative-blue)]"
                 initial={{ width: 0 }}
                 animate={{ width: `${progress}%` }}
               />

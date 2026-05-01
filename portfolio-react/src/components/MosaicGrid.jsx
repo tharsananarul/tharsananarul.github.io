@@ -36,63 +36,66 @@ export default function MosaicGrid({ sections, animate = true, accentColor }) {
     return () => window.removeEventListener('keydown', handleKey)
   }, [lbOpen, lbImages.length, closeLb, prev, next])
 
-  // Lightbox rendered via Portal
-  const lightbox = lbOpen ? createPortal(
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="fixed inset-0 z-[9999] bg-primary/95 backdrop-blur-xl flex items-center justify-center touch-none p-4"
-      onClick={closeLb}
-    >
-      <div
-        className="relative flex flex-col items-center max-w-full max-h-full"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <button
-          onClick={closeLb}
-          className="absolute -top-12 right-0 p-3 rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-colors backdrop-blur-md"
-          aria-label="Close lightbox"
-        >
-          <X size={20} />
-        </button>
-
+  // Lightbox content
+  const lightboxContent = (
+    <AnimatePresence>
+      {lbOpen && (
         <motion.div
-          key={lbIndex}
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="relative group"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-[10001] bg-primary/95 backdrop-blur-xl flex items-center justify-center touch-none p-4"
+          onClick={closeLb}
         >
-          <img
-            src={lbImages[lbIndex]?.src}
-            alt={lbImages[lbIndex]?.alt || ''}
-            className="max-w-[90vw] max-h-[75vh] md:max-h-[80vh] object-contain rounded-2xl shadow-2xl border border-white/5"
-          />
+          <div
+            className="relative flex flex-col items-center max-w-full max-h-full"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={closeLb}
+              className="absolute -top-12 right-0 p-3 rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-colors backdrop-blur-md"
+              aria-label="Close lightbox"
+            >
+              <X size={20} />
+            </button>
+
+            <motion.div
+              key={lbIndex}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="relative group"
+            >
+              <img
+                src={lbImages[lbIndex]?.src}
+                alt={lbImages[lbIndex]?.alt || ''}
+                className="max-w-[90vw] max-h-[75vh] md:max-h-[80vh] object-contain rounded-2xl shadow-2xl border border-white/5"
+              />
+            </motion.div>
+
+            <div className="mt-6 px-6 py-2 rounded-full bg-white/5 border border-white/10 text-white/50 text-[10px] font-bold tracking-widest uppercase backdrop-blur-md">
+              {lbIndex + 1} / {lbImages.length}
+            </div>
+          </div>
+
+          <button
+            onClick={(e) => { e.stopPropagation(); prev() }}
+            className="fixed left-4 top-1/2 -translate-y-1/2 p-4 rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-colors backdrop-blur-md z-[10002]"
+            aria-label="Previous image"
+          >
+            <ChevronLeft size={24} />
+          </button>
+
+          <button
+            onClick={(e) => { e.stopPropagation(); next() }}
+            className="fixed right-4 top-1/2 -translate-y-1/2 p-4 rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-colors backdrop-blur-md z-[10002]"
+            aria-label="Next image"
+          >
+            <ChevronRight size={24} />
+          </button>
         </motion.div>
-
-        <div className="mt-6 px-6 py-2 rounded-full bg-white/5 border border-white/10 text-white/50 text-[10px] font-bold tracking-widest uppercase backdrop-blur-md">
-          {lbIndex + 1} / {lbImages.length}
-        </div>
-      </div>
-
-      <button
-        onClick={(e) => { e.stopPropagation(); prev() }}
-        className="fixed left-4 top-1/2 -translate-y-1/2 p-4 rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-colors backdrop-blur-md z-[10000]"
-        aria-label="Previous image"
-      >
-        <ChevronLeft size={24} />
-      </button>
-
-      <button
-        onClick={(e) => { e.stopPropagation(); next() }}
-        className="fixed right-4 top-1/2 -translate-y-1/2 p-4 rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-colors backdrop-blur-md z-[10000]"
-        aria-label="Next image"
-      >
-        <ChevronRight size={24} />
-      </button>
-    </motion.div>,
-    document.body
-  ) : null
+      )}
+    </AnimatePresence>
+  )
 
   return (
     <>
@@ -113,10 +116,10 @@ export default function MosaicGrid({ sections, animate = true, accentColor }) {
               )}
               {section.title && (
                 <motion.h3 
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="text-2xl md:text-3xl font-bold tracking-tight"
+                   initial={{ opacity: 0, y: 10 }}
+                   whileInView={{ opacity: 1, y: 0 }}
+                   viewport={{ once: true }}
+                   className="text-2xl md:text-3xl font-bold tracking-tight"
                 >
                   {section.title}
                 </motion.h3>
@@ -140,19 +143,21 @@ export default function MosaicGrid({ sections, animate = true, accentColor }) {
                   className={`relative group cursor-pointer rounded-2xl md:rounded-3xl overflow-hidden glass-card aspect-square bg-white/5 ${
                     item.tall ? 'md:row-span-2 md:aspect-auto' : ''
                   } ${item.wide ? 'md:col-span-2 md:aspect-auto' : ''}`}
-                  style={{ '--card-accent': accentColor || 'var(--color-accent)' }}
+                  style={{ '--card-accent': accentColor || 'var(--color-creative-blue)' }}
                   onClick={() => openLb(section.items, idx)}
                 >
-                  <LazyImage
-                    src={item.src}
-                    alt={item.alt || ''}
-                    className="w-full h-full"
-                    skeletonClassName="opacity-50"
-                  />
+                  <div className="w-full h-full pointer-events-none">
+                    <LazyImage
+                      src={item.src}
+                      alt={item.alt || ''}
+                      className="w-full h-full"
+                      skeletonClassName="opacity-50"
+                    />
+                  </div>
                   
                   <div 
-                    className="absolute inset-0 z-20 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center backdrop-blur-[2px]"
-                    style={{ backgroundColor: `${accentColor || 'var(--color-accent)'}33` }}
+                    className="absolute inset-0 z-20 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center backdrop-blur-[2px] pointer-events-none"
+                    style={{ backgroundColor: accentColor ? `${accentColor}33` : 'rgba(14, 165, 233, 0.2)' }}
                   >
                     <div className="p-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 transform scale-50 group-hover:scale-100 transition-transform duration-500">
                       <Maximize2 className="text-white" size={24} />
@@ -165,9 +170,7 @@ export default function MosaicGrid({ sections, animate = true, accentColor }) {
         </div>
       ))}
 
-      <AnimatePresence>
-        {lbOpen && lightbox}
-      </AnimatePresence>
+      {createPortal(lightboxContent, document.body)}
     </>
   )
 }

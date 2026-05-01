@@ -116,8 +116,7 @@ export default function Navbar() {
       <div className="hidden md:flex items-center gap-10">
         <div className="flex items-center gap-8 nav-links">
           {navLinks.map((link, i) => {
-            const colors = ['blue', 'yellow', 'orange', 'blue'];
-            const color = colors[i % colors.length];
+            const color = 'blue';
             return (
             <Magnetic key={link.name}>
               <Link
@@ -187,8 +186,7 @@ export default function Navbar() {
             <div className="flex flex-col p-6 pt-24 gap-6 items-center text-center">
               <p className="text-accent-light font-black tracking-[0.4em] uppercase text-sm mb-2 opacity-80">Menu</p>
                 {navLinks.map((link, i) => {
-                  const colors = ['blue', 'yellow', 'orange', 'blue'];
-                  const color = colors[i % colors.length];
+                  const color = 'blue';
                   return (
                   <motion.div
                     key={link.name}

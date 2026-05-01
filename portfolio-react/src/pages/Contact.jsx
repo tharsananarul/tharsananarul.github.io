@@ -20,10 +20,10 @@ export default function Contact() {
     <main className="relative pb-20 bg-gradient-to-b from-primary via-[#ea580c]/20 to-primary min-h-screen overflow-hidden">
       <PageHero
         tag="Contact"
-        title={<>Parlons de votre <br /><span className="text-[var(--color-creative-blue)] uppercase font-black" style={{ WebkitTextStroke: '1px white' }}>prochain projet.</span></>}
+        title={<span className="flex flex-col"><span>Parlons de votre</span> <span className="text-[var(--color-creative-blue)] -mt-2 md:-mt-5" style={{ WebkitTextStroke: '1px white' }}>prochain projet.</span></span>}
         subtitle="Que vous ayez une idée précise ou que vous souhaitiez explorer des possibilités, je suis là pour vous accompagner."
         compact
-        themeColor="orange"
+        themeColor="blue"
       />
 
 
@@ -77,10 +77,10 @@ export default function Contact() {
             initial={{ opacity: 0, scale: 0.9, y: 40 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="p-8 md:p-12 rounded-none bg-[var(--color-primary)] border-4 border-black shadow-[12px_12px_0_0_var(--color-creative-blue)] relative overflow-hidden"
+            className="glass-card p-8 md:p-16 glow-card"
           >
             <div className="absolute top-0 right-0 p-8 text-white/5 -rotate-12 translate-x-4 -translate-y-4">
-              <MessageSquare size={120} />
+              <MessageSquare size={160} />
             </div>
             
             <AnimatePresence mode="wait">
@@ -92,14 +92,14 @@ export default function Contact() {
                   exit={{ opacity: 0, scale: 0.9 }}
                   className="relative z-10 flex flex-col items-center justify-center py-20 text-center space-y-6"
                 >
-                  <div className="p-6 rounded-full bg-accent-light/10 text-accent-light">
-                    <CheckCircle2 size={60} />
+                  <div className="p-8 rounded-full bg-[var(--color-creative-blue)]/20 text-[var(--color-creative-blue)] shadow-[0_0_30px_rgba(14,165,233,0.3)]">
+                    <CheckCircle2 size={80} />
                   </div>
-                  <h3 className="text-3xl font-bold">Message envoyé !</h3>
-                  <p className="text-text-muted max-w-xs mx-auto">Merci pour votre message. Je reviens vers vous très rapidement.</p>
+                  <h3 className="text-4xl font-bold">Message envoyé !</h3>
+                  <p className="text-text-muted max-w-sm mx-auto text-lg">Merci pour votre message. Je reviens vers vous très rapidement.</p>
                   <button 
                     onClick={() => setStatus('idle')}
-                    className="text-accent-light font-bold hover:underline mt-4"
+                    className="text-[var(--color-creative-blue)] font-bold hover:underline mt-6 text-lg"
                   >
                     Envoyer un autre message
                   </button>
@@ -110,7 +110,7 @@ export default function Contact() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="relative z-10 space-y-8"
+                  className="relative z-10 space-y-10"
                   action="https://formsubmit.co/tharsananarul@gmail.com"
                   method="POST"
                   onSubmit={handleSubmit}
@@ -119,47 +119,47 @@ export default function Contact() {
                   <input type="hidden" name="_next" value="https://tharsanan.com/contact.html" />
                   <input type="hidden" name="_subject" value="Nouveau message Portfolio !" />
                   
-                  <div className="grid md:grid-cols-2 gap-8">
-                    <div className="space-y-3">
-                      <label className="text-[10px] font-black uppercase tracking-widest text-white px-1">Nom complet</label>
+                  <div className="grid md:grid-cols-2 gap-10">
+                    <div className="space-y-4">
+                      <label className="text-[11px] font-black uppercase tracking-[0.2em] text-white/50 px-1">Nom complet</label>
                       <input 
                         required
                         name="name"
                         type="text" 
                         placeholder="Marcel Dubois"
-                        className="w-full bg-white border-2 sm:border-4 border-black rounded-none px-4 py-3 sm:px-6 sm:py-5 focus:outline-none focus:bg-[var(--color-creative-yellow)] transition-all text-black font-bold placeholder:text-black/30 shadow-[2px_2px_0_0_#000] sm:shadow-[4px_4px_0_0_#000]"
+                        className="w-full bg-white/[0.05] border border-white/10 rounded-2xl px-6 py-5 focus:outline-none focus:bg-white/[0.08] focus:border-[var(--color-creative-blue)]/50 transition-all text-white font-bold placeholder:text-white/20"
                       />
                     </div>
-                    <div className="space-y-3">
-                      <label className="text-[10px] font-black uppercase tracking-widest text-white px-1">Email</label>
+                    <div className="space-y-4">
+                      <label className="text-[11px] font-black uppercase tracking-[0.2em] text-white/50 px-1">Email</label>
                       <input 
                         required
                         name="email"
                         type="email" 
                         placeholder="marcel@dubois.fr"
-                        className="w-full bg-white border-2 sm:border-4 border-black rounded-none px-4 py-3 sm:px-6 sm:py-5 focus:outline-none focus:bg-[var(--color-creative-blue)] transition-all text-black font-bold placeholder:text-black/30 shadow-[2px_2px_0_0_#000] sm:shadow-[4px_4px_0_0_#000]"
+                        className="w-full bg-white/[0.05] border border-white/10 rounded-2xl px-6 py-5 focus:outline-none focus:bg-white/[0.08] focus:border-[var(--color-creative-blue)]/50 transition-all text-white font-bold placeholder:text-white/20"
                       />
                     </div>
                   </div>
 
-                  <div className="space-y-3">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-white px-1">Sujet</label>
+                  <div className="space-y-4">
+                    <label className="text-[11px] font-black uppercase tracking-[0.2em] text-white/50 px-1">Sujet</label>
                     <input 
                       name="subject"
                       type="text" 
                       placeholder="Collaboration, Opportunité, Question..."
-                      className="w-full bg-white border-2 sm:border-4 border-black rounded-none px-4 py-3 sm:px-6 sm:py-5 focus:outline-none focus:bg-[var(--color-creative-yellow)] transition-all text-black font-bold placeholder:text-black/30 shadow-[2px_2px_0_0_#000] sm:shadow-[4px_4px_0_0_#000]"
+                      className="w-full bg-white/[0.05] border border-white/10 rounded-2xl px-6 py-5 focus:outline-none focus:bg-white/[0.08] focus:border-[var(--color-creative-blue)]/50 transition-all text-white font-bold placeholder:text-white/20"
                     />
                   </div>
 
-                  <div className="space-y-3">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-white px-1">Message</label>
+                  <div className="space-y-4">
+                    <label className="text-[11px] font-black uppercase tracking-[0.2em] text-white/50 px-1">Message</label>
                     <textarea 
                       required
                       name="message"
-                      rows="4"
+                      rows="5"
                       placeholder="Comment puis-je vous aider ?"
-                      className="w-full bg-white border-2 sm:border-4 border-black rounded-none px-4 py-3 sm:px-6 sm:py-5 focus:outline-none focus:bg-[var(--color-creative-blue)] focus:text-white transition-all text-black font-bold placeholder:text-black/30 resize-none shadow-[2px_2px_0_0_#000] sm:shadow-[4px_4px_0_0_#000]"
+                      className="w-full bg-white/[0.05] border border-white/10 rounded-2xl px-6 py-5 focus:outline-none focus:bg-white/[0.08] focus:border-[var(--color-creative-blue)]/50 transition-all text-white font-bold placeholder:text-white/20 resize-none"
                     ></textarea>
                   </div>
 
@@ -167,7 +167,7 @@ export default function Contact() {
                     <button 
                       type="submit" 
                       disabled={status === 'sending'}
-                      className="btn-premium w-full gap-3 text-lg py-6 shadow-xl shadow-accent-light/10 group disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="btn-premium w-full gap-3 text-lg py-6 shadow-2xl group disabled:opacity-50 disabled:cursor-not-allowed bg-gradient-to-r from-[var(--color-creative-blue)] to-blue-600 !text-white border-none"
                     >
                       {status === 'sending' ? (
                         <>

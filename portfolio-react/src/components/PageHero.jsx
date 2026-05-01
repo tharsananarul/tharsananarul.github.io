@@ -14,19 +14,18 @@ import { motion } from 'framer-motion'
 export default function PageHero({ tag, title, subtitle, compact = false, themeColor = 'blue' }) {
   const getColors = () => {
     switch(themeColor) {
-      case 'yellow': return ['var(--color-creative-yellow)', 'var(--color-creative-blue)']
       case 'cyan': return ['var(--color-creative-blue)', 'var(--color-creative-orange)']
       case 'orange': return ['var(--color-creative-orange)', 'var(--color-creative-blue)']
-      case 'green': return ['var(--color-creative-orange)', 'var(--color-creative-yellow)']
+      case 'green': return ['var(--color-creative-orange)', 'var(--color-creative-blue)']
       case 'blue': 
-      default: return ['var(--color-creative-blue)', 'var(--color-creative-yellow)']
+      default: return ['var(--color-creative-blue)', 'var(--color-creative-orange)']
     }
   }
   
   const [color1, color2] = getColors()
 
   return (
-    <section className={`relative overflow-hidden ${compact ? 'pt-24 pb-4 md:pt-32 md:pb-6' : 'pt-28 pb-16 md:pt-40 md:pb-28'}`}>
+    <section className={`relative overflow-hidden ${compact ? 'pt-20 pb-2 md:pt-28 md:pb-4' : 'pt-28 pb-16 md:pt-40 md:pb-28'}`}>
       {/* Decorative background layers */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Radial gradient glow - colorful creative style */}
@@ -64,8 +63,8 @@ export default function PageHero({ tag, title, subtitle, compact = false, themeC
             initial={{ opacity: 0, y: 40, filter: 'blur(8px)' }}
             animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
             transition={{ delay: 0.15, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="font-black mb-6 md:mb-8 tracking-tighter leading-[1] uppercase"
-            style={{ fontSize: 'clamp(2.2rem, 8vw, 7rem)' }}
+            className="font-black mb-3 md:mb-4 tracking-tighter leading-[0.7] uppercase"
+            style={{ fontSize: 'clamp(2.2rem, 8vw, 5.5rem)' }}
           >
             {title}
           </motion.h1>

@@ -20,8 +20,8 @@ const passions = [
     subtitle: "Liberté & Endurance",
     desc: "Le cyclisme me permet de me dépasser et de m'évader. C'est un équilibre entre effort, découverte et discipline.",
     icon: Bike,
-    color: "text-[var(--color-creative-yellow)]",
-    bg: "rgba(250, 204, 21, 0.1)",
+    color: "text-[var(--color-creative-orange)]",
+    bg: "rgba(249, 115, 22, 0.1)",
     hasMore: false
   },
   {
@@ -104,7 +104,7 @@ export default function PassionSection() {
             <h2 className="text-4xl md:text-7xl font-black mb-4 md:mb-8 tracking-tighter uppercase text-white relative inline-block">
               Ce qui me <br />
               <span className="text-[var(--color-creative-blue)] mt-2 inline-block" style={{ WebkitTextStroke: '2px white' }}>définit aussi.</span>
-              <div className="sticker-shape sticker-yellow absolute -top-10 -right-20 rotate-12 hidden md:block">Life</div>
+              <div className="sticker-shape sticker-cyan absolute -top-10 -right-20 rotate-12 hidden md:block">Life</div>
             </h2>
           </motion.div>
         </div>
@@ -129,7 +129,7 @@ export default function PassionSection() {
             )
 
             const cardClasses = "group p-6 md:p-10 rounded-none border-2 md:border-4 border-black shadow-[4px_4px_0_0_#000] md:shadow-[8px_8px_0_0_#000] hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0_0_#000] md:hover:shadow-[4px_4px_0_0_#000] transition-all duration-500 relative overflow-hidden bg-black/40 backdrop-blur-xl"
-            const accentStyle = { borderTopColor: p.color.includes('blue') ? 'var(--color-creative-blue)' : p.color.includes('yellow') ? 'var(--color-creative-yellow)' : 'var(--color-creative-orange)' }
+            const accentStyle = { borderTopColor: p.color.includes('blue') ? 'var(--color-creative-blue)' : 'var(--color-creative-orange)' }
 
             return p.hasMore ? (
               <motion.div

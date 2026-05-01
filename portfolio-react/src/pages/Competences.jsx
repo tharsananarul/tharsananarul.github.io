@@ -52,7 +52,7 @@ export default function Competences() {
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 mb-32 relative">
           {/* Stickers */}
           <div className="sticker-shape sticker-blue absolute -top-12 -left-4 rotate-[-10deg] z-20">Creative</div>
-          <div className="sticker-shape sticker-yellow absolute -bottom-12 -right-4 rotate-[15deg] z-20">Technical</div>
+          <div className="sticker-shape sticker-cyan absolute -bottom-12 -right-4 rotate-[15deg] z-20">Technical</div>
 
           {skills.map((skill, i) => (
             <motion.div
@@ -61,22 +61,17 @@ export default function Competences() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className={`p-4 md:p-8 rounded-none border-4 border-black shadow-[8px_8px_0_0_#000] hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0_0_#000] transition-all duration-500 group ${
-                i % 4 === 0 ? 'bg-white' : 
-                i % 4 === 1 ? 'bg-[#f0f9ff]' : 
-                i % 4 === 2 ? 'bg-[#fffbeb]' : 
-                'bg-[#fef2f2]'
-              }`}
+              className="glass-card p-6 md:p-10 group glow-card"
             >
-              <div className={`w-10 h-10 md:w-14 md:h-14 rounded-none border-2 border-black flex items-center justify-center mb-4 md:mb-8 transition-all duration-500 transform group-hover:rotate-6 shadow-[4px_4px_0_0_#000] ${
-                i % 3 === 0 ? 'bg-[var(--color-creative-blue)] text-white' : 
-                i % 3 === 1 ? 'bg-[var(--color-creative-yellow)] text-black' : 
-                'bg-[var(--color-creative-blue)] text-black'
-              }`}>
+              <div className={`w-12 h-12 md:w-16 md:h-16 rounded-2xl flex items-center justify-center mb-6 md:mb-10 transition-all duration-500 transform group-hover:scale-110 shadow-lg ${
+                i % 3 === 0 ? 'bg-gradient-to-br from-[var(--color-creative-blue)] to-blue-600' : 
+                i % 3 === 1 ? 'bg-gradient-to-br from-[var(--color-creative-orange)] to-orange-600' : 
+                'bg-gradient-to-br from-blue-400 to-[var(--color-creative-blue)]'
+              } text-white`}>
                 {skill.icon}
               </div>
-              <h3 className="text-xs sm:text-base md:text-xl font-black mb-2 md:mb-4 uppercase tracking-tighter text-black leading-tight">{skill.title}</h3>
-              <p className="text-gray-700 leading-relaxed text-xs md:text-sm font-medium">{skill.desc}</p>
+              <h3 className="text-base sm:text-lg md:text-2xl font-black mb-3 md:mb-5 uppercase tracking-tighter text-white leading-tight">{skill.title}</h3>
+              <p className="text-white/60 leading-relaxed text-sm md:text-base font-medium">{skill.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -98,31 +93,29 @@ export default function Competences() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05, duration: 0.8 }}
-                className={`p-4 md:p-8 rounded-none border-4 border-black shadow-[8px_8px_0_0_#000] flex flex-col h-full group hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0_0_#000] transition-all duration-300 ${
-                  i % 2 === 0 ? 'bg-white' : 'bg-[#f8f8f2]'
-                }`}
+                className="glass-card p-6 md:p-10 group flex flex-col h-full glow-card"
               >
-                <div className="flex items-center justify-between mb-4 md:mb-8">
+                <div className="flex items-center justify-between mb-6 md:mb-10">
                   <div 
-                    className="w-10 h-10 md:w-14 md:h-14 rounded-none border-2 border-black flex items-center justify-center text-lg md:text-2xl font-black shadow-[4px_4px_0_0_#000] transition-transform duration-500 group-hover:scale-110"
+                    className="w-12 h-12 md:w-16 md:h-16 rounded-2xl flex items-center justify-center text-xl md:text-2xl font-black shadow-lg transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6"
                     style={{ backgroundColor: item.color, color: 'white' }}
                   >
                     {item.abbr}
                   </div>
                 </div>
-                <h3 className="text-xs sm:text-sm md:text-lg font-black mb-1 md:mb-3 uppercase tracking-tighter text-black leading-tight">{item.name}</h3>
-                <p className="text-gray-600 text-xs md:text-sm mb-3 md:mb-6 leading-relaxed font-medium">
+                <h3 className="text-sm sm:text-base md:text-xl font-black mb-2 md:mb-4 uppercase tracking-tighter text-white leading-tight">{item.name}</h3>
+                <p className="text-white/50 text-xs md:text-base mb-6 md:mb-8 leading-relaxed font-medium">
                   {item.desc}
                 </p>
                 <div className="mt-auto">
-                  <div className="h-3 w-full bg-black/10 rounded-none overflow-hidden border border-black">
+                  <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden border border-white/5">
                     <motion.div 
                       initial={{ width: 0 }}
                       whileInView={{ width: `${item.level}%` }}
                       viewport={{ once: true }}
                       transition={{ duration: 1.5, ease: "circOut", delay: 0.5 }}
-                      className="h-full rounded-none"
-                      style={{ backgroundColor: item.color }}
+                      className="h-full rounded-full"
+                      style={{ backgroundColor: item.color, boxShadow: `0 0 15px ${item.color}66` }}
                     />
                   </div>
                 </div>
@@ -135,7 +128,7 @@ export default function Competences() {
         <div>
           <h2 className="text-2xl md:text-6xl font-black mb-16 tracking-tighter uppercase">
             Langues <br />
-            <span className="bg-[var(--color-creative-yellow)] text-black px-3 inline-block -rotate-1 border-2 border-black shadow-[4px_4px_0_0_var(--color-creative-blue)]">parlées</span>
+            <span className="bg-[var(--color-creative-orange)] text-white px-3 inline-block -rotate-1 border-2 border-black shadow-[4px_4px_0_0_var(--color-creative-blue)]">parlées</span>
           </h2>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
